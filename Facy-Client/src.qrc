@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/Facy-Client">
+        <file>images/logo.png</file>
+    </qresource>
+</RCC>
