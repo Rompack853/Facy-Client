@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>859</width>
-    <height>532</height>
+    <width>900</width>
+    <height>500</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -54,8 +54,7 @@ QFrame#frmMain .Spacer{
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
-    <string notr="true">
-</string>
+    <string notr="true"/>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
@@ -120,7 +119,7 @@ QFrame#frmMain .Spacer{
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="src.qrc">:/Facy-Client/images/logo.png</pixmap>
+          <pixmap resource="src.qrc">:/Facy-Client/images/phLogo.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -290,7 +289,7 @@ QFrame#frmMain .Spacer{
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>859</width>
+     <width>900</width>
      <height>22</height>
     </rect>
    </property>
