@@ -62,6 +62,7 @@ private:
     FrmOptions frmOptions;
     FrmAccount frmAccount;
     FileExplorer fileExplorer;
+    LogicController* client;
 
     int windowWidth = 900;
     int windowHeight = 500;

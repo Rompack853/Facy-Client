@@ -4,3 +4,15 @@
 *.user
 build-Facy-Client-Desktop_Qt_5_15_2_MinGW_64_bit-Debug
 build-Facy-Client-Desktop_Qt_5_15_2_MinGW_32_bit-Debug
+*.stash
+*.o
+build-Facy-Client-Desktop-Debug/ui_frmoptions.h
+build-Facy-Client-Desktop-Debug/ui_frmmain.h
+build-Facy-Client-Desktop-Debug/qrc_src.cpp
+build-Facy-Client-Desktop-Debug/moc_predefs.h
+build-Facy-Client-Desktop-Debug/moc_logiccontroller.cpp
+build-Facy-Client-Desktop-Debug/moc_frmoptions.cpp
+build-Facy-Client-Desktop-Debug/moc_frmmain.cpp
+build-Facy-Client-Desktop-Debug/moc_client.cpp
+build-Facy-Client-Desktop-Debug/Makefile
+build-Facy-Client-Desktop-Debug/Facy-Client
