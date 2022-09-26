@@ -5,6 +5,7 @@
 #include <QDebug>
 #include "frmoptions.h"
 #include "frmaccount.h"
+#include "fileexplorer.h"
 
 namespace Ui {
 class FrmMain;
@@ -22,9 +23,7 @@ private slots:
 
     void changeFacyPage(int page);
 
-    void openOptions();
-
-    void openAccount();
+    void openWindow(int window);
 
     //Login
     void on_loginClbShowPw_stateChanged(int page);
@@ -55,14 +54,23 @@ private slots:
 
     void on_loginClbSignUp_clicked();
 
+    void on_btnUploadPictures_clicked();
+
 private:
     Ui::FrmMain *ui;
 
     FrmOptions frmOptions;
     FrmAccount frmAccount;
+    FileExplorer fileExplorer;
 
     int windowWidth = 900;
     int windowHeight = 500;
 };
+enum window{
+    OPTIONSWINDOW,
+    ACCOUNTWINDOW,
+    FILEEXPLORER
+};
+
 
 #endif // FRMMAIN_H

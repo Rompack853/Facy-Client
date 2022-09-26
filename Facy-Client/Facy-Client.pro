@@ -9,6 +9,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    fileexplorer.cpp \
     frmaccount.cpp \
     frmmain.cpp \
     frmoptions.cpp \
@@ -16,12 +17,14 @@ SOURCES += \
     main.cpp
 
 HEADERS += \
+    fileexplorer.h \
     frmaccount.h \
     frmmain.h \
     frmoptions.h \
     logiccontroller.h
 
 FORMS += \
+    fileexplorer.ui \
     frmaccount.ui \
     frmmain.ui \
     frmoptions.ui

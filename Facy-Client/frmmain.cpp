@@ -21,16 +21,28 @@ void FrmMain::changeFacyPage(int page)
     ui->facyWindow->setCurrentIndex(page);
 }
 
-void FrmMain::openOptions()
+void FrmMain::openWindow(int window)
 {
-    frmOptions.show();
-}
+    switch (window) {
+    case OPTIONSWINDOW:
+        frmOptions.setWindowFlags(Qt::WindowCloseButtonHint);
+        frmOptions.show();
+        break;
 
-void FrmMain::openAccount()
-{
-    frmAccount.show();
-}
+    case ACCOUNTWINDOW:
+        frmAccount.setWindowFlags(Qt::WindowCloseButtonHint);
+        frmAccount.show();
+        break;
 
+    case FILEEXPLORER:
+        fileExplorer.setWindowFlags(Qt::WindowCloseButtonHint);
+        fileExplorer.show();
+        break;
+
+    default:
+        break;
+    }
+}
 
 
 /*==================================================
@@ -58,8 +70,14 @@ void FrmMain::on_loginBtnLogin_clicked()
 
 void FrmMain::on_loginBtnOptions_clicked()
 {
-    openOptions();
+    openWindow(OPTIONSWINDOW);
 }
+
+void FrmMain::on_loginClbSignUp_clicked()
+{
+    openWindow(ACCOUNTWINDOW);
+}
+
 
 /*==================================================
  *
@@ -96,7 +114,7 @@ void FrmMain::on_btnHelp_clicked()
 
 void FrmMain::on_btnOptions_clicked()
 {
-    openOptions();
+    openWindow(OPTIONSWINDOW);
 }
 
 void FrmMain::on_btnGame_clicked()
@@ -148,8 +166,10 @@ void FrmMain::resizeEvent(QResizeEvent *event)
 
 
 
-void FrmMain::on_loginClbSignUp_clicked()
+
+
+void FrmMain::on_btnUploadPictures_clicked()
 {
-    openAccount();
+    openWindow(FILEEXPLORER);
 }
 

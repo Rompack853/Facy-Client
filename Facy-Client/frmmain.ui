@@ -164,7 +164,7 @@ QFrame#gridCards &gt;*{
     <item row="0" column="0" rowspan="2">
      <widget class="QStackedWidget" name="facyWindow">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="login">
        <layout class="QGridLayout" name="gridLayout_13">
@@ -249,19 +249,6 @@ QFrame#gridCards &gt;*{
            <enum>QFrame::Raised</enum>
           </property>
           <layout class="QGridLayout" name="gridLayout_11">
-           <item row="0" column="1">
-            <spacer name="loginVSpacerMain1">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>40</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
            <item row="2" column="2">
             <spacer name="loginHSpacerMain2">
              <property name="orientation">
@@ -271,6 +258,115 @@ QFrame#gridCards &gt;*{
               <size>
                <width>40</width>
                <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="2" column="1">
+            <layout class="QGridLayout" name="gridLayout_12">
+             <item row="6" column="0" colspan="3">
+              <widget class="QCommandLinkButton" name="loginClbSignUp">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>Registrieren</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="0" colspan="3">
+              <widget class="QPushButton" name="loginBtnLogin">
+               <property name="text">
+                <string>Bestätigen</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QLineEdit" name="loginLeEmail"/>
+             </item>
+             <item row="3" column="2">
+              <widget class="QCheckBox" name="loginClbShowPw">
+               <property name="text">
+                <string>zeige pw</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0" colspan="3" alignment="Qt::AlignHCenter">
+              <widget class="QLabel" name="label_13">
+               <property name="text">
+                <string>Login</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0" colspan="3">
+              <widget class="Line" name="line_7">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="0" colspan="3">
+              <widget class="Line" name="line_6">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QLineEdit" name="loginLePassword">
+               <property name="echoMode">
+                <enum>QLineEdit::Password</enum>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_11">
+               <property name="text">
+                <string>Email-Adresse:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="7" column="0" colspan="3">
+              <widget class="QCommandLinkButton" name="loginClbForgotPw">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>Passwort vergessen?</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_12">
+               <property name="text">
+                <string>Passwort:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="2">
+              <widget class="QPushButton" name="loginBtnOptions">
+               <property name="text">
+                <string>Einstellungen</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="0" column="1">
+            <spacer name="loginVSpacerMain1">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
               </size>
              </property>
             </spacer>
@@ -300,102 +396,6 @@ QFrame#gridCards &gt;*{
               </size>
              </property>
             </spacer>
-           </item>
-           <item row="2" column="1">
-            <layout class="QGridLayout" name="gridLayout_12">
-             <item row="6" column="0" colspan="3">
-              <widget class="QCommandLinkButton" name="loginClbSignUp">
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>50</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>Registrieren</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="0">
-              <widget class="QLabel" name="label_11">
-               <property name="text">
-                <string>Email-Adresse:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="0">
-              <widget class="QLabel" name="label_12">
-               <property name="text">
-                <string>Passwort:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="2">
-              <widget class="QCheckBox" name="loginClbShowPw">
-               <property name="text">
-                <string>zeige pw</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="1">
-              <widget class="QLineEdit" name="loginLeEmail"/>
-             </item>
-             <item row="7" column="0" colspan="3">
-              <widget class="QCommandLinkButton" name="loginClbForgotPw">
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>50</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>Passwort vergessen?</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="1">
-              <widget class="QLineEdit" name="loginLePassword">
-               <property name="echoMode">
-                <enum>QLineEdit::Password</enum>
-               </property>
-              </widget>
-             </item>
-             <item row="5" column="0" colspan="3">
-              <widget class="Line" name="line_6">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="0" colspan="3" alignment="Qt::AlignHCenter">
-              <widget class="QLabel" name="label_13">
-               <property name="text">
-                <string>Login</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="0" colspan="3">
-              <widget class="Line" name="line_7">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="0" colspan="3">
-              <widget class="QPushButton" name="loginBtnLogin">
-               <property name="text">
-                <string>Bestätigen</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="2">
-              <widget class="QPushButton" name="loginBtnOptions">
-               <property name="text">
-                <string>Einstellungen</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
            </item>
           </layout>
          </widget>
@@ -938,7 +938,13 @@ QFrame#gridCards &gt;*{
                            </size>
                           </property>
                           <property name="text">
-                           <string>picture</string>
+                           <string/>
+                          </property>
+                          <property name="pixmap">
+                           <pixmap resource="src.qrc">:/Facy-Client/images/phPicture.png</pixmap>
+                          </property>
+                          <property name="scaledContents">
+                           <bool>true</bool>
                           </property>
                          </widget>
                         </item>
@@ -991,9 +997,9 @@ QFrame#gridCards &gt;*{
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="pushButton_9">
+                       <widget class="QPushButton" name="btnUploadPictures">
                         <property name="text">
-                         <string>PushButton</string>
+                         <string>Bild hinzufügen</string>
                         </property>
                        </widget>
                       </item>
