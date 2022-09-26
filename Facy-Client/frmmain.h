@@ -17,6 +17,17 @@ public:
     ~FrmMain();
 
 private slots:
+
+    void changeFacyPage(int page);
+
+
+    //Login
+    void on_loginClbShowPw_stateChanged(int page);
+
+    void on_loginBtnLogin_clicked();
+
+
+    //Main
     void on_btnLogout_clicked();
 
     void on_btnStart_clicked();

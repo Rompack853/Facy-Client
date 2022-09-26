@@ -6,7 +6,9 @@ FrmMain::FrmMain(QWidget *parent) :
     ui(new Ui::FrmMain)
 {
     ui->setupUi(this);
+    changeFacyPage(0);
     changeMainPage(0);
+
 }
 
 FrmMain::~FrmMain()
@@ -14,15 +16,44 @@ FrmMain::~FrmMain()
     delete ui;
 }
 
+void FrmMain::changeFacyPage(int page)
+{
+    ui->facyWindow->setCurrentIndex(page);
+}
+
+
 
 /*==================================================
  *
- *      Sidebar
+ *      Login   -   Inhaltsbereich
+ *
+ ==================================================*/
+
+
+
+void FrmMain::on_loginClbShowPw_stateChanged(int state)
+{
+    if(state == 0) {
+        ui->loginLePassword->setEchoMode(QLineEdit::Password);
+    }else {
+        ui->loginLePassword->setEchoMode(QLineEdit::Normal);
+    }
+}
+
+
+void FrmMain::on_loginBtnLogin_clicked()
+{
+    changeFacyPage(1);
+}
+
+/*==================================================
+ *
+ *      Main    -   Sidebar
  *
  ==================================================*/
 void FrmMain::on_btnLogout_clicked()
 {
-
+    changeFacyPage(0);
 }
 
 void FrmMain::on_btnStart_clicked()
@@ -83,10 +114,9 @@ void FrmMain::resizeEvent(QResizeEvent *event)
 
 /*==================================================
  *
- *      Inhaltsbereich
+ *      Main    -   Inhaltsbereich
  *
  ==================================================*/
-
 
 
 

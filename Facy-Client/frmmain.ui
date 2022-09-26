@@ -17,10 +17,47 @@
    <string notr="true">QWidget#centralwidget{
 
 }
+/*==============================
+*
+*		Login - Obere Leiste
+*
+==============================*/
+QFrame#loginTopbar{
+	background-color: rgb(210, 212, 223);
+	min-height: 75px;
+	max-height: 100px;
+}
+QLabel#logoImgLogo{
+/*
+	background-color: rgb(255, 255, 255);
+*/
+	min-width: 72px;
+	min-height: 72px;
+}
 
 /*==============================
 *
-*		Obere Leiste
+*		Login - Inhaltsbereich
+*
+==============================*/
+QFrame#loginWindow *{
+	font-size: 16px;
+}
+QFrame#loginWindow{
+	background-color: rgb(210, 212, 223);
+}
+QFrame#loginWindow .Spacer{
+	max-height: 10px;
+
+
+}
+
+
+
+
+/*==============================
+*
+*		Main - Obere Leiste
 *
 ==============================*/
 QFrame#topbar{
@@ -39,7 +76,7 @@ QLabel#imgLogo{
 
 /*==============================
 *
-*		Seitliche Leiste
+*		Main - Seitliche Leiste
 *
 ==============================*/
 QFrame#sidebar *{
@@ -62,7 +99,7 @@ QLabel#imgAvatar{
 
 /*==============================
 *
-*		Inhaltsbereich
+*		Main - Inhaltsbereich
 *
 ==============================*/
 QFrame#mainWindow *{
@@ -124,616 +161,594 @@ QFrame#gridCards &gt;*{
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_3">
-    <item row="0" column="1">
-     <widget class="QFrame" name="topbar">
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout">
-       <item>
-        <spacer name="hSpacerTopbar1">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QLabel" name="lblName">
-         <property name="font">
-          <font>
-           <pointsize>30</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>FACY</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="hSpacerTopbar2">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QLabel" name="imgLogo">
-         <property name="maximumSize">
-          <size>
-           <width>72</width>
-           <height>72</height>
-          </size>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="pixmap">
-          <pixmap resource="src.qrc">:/Facy-Client/images/phLogo.png</pixmap>
-         </property>
-         <property name="scaledContents">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item row="0" column="0" rowspan="3">
-     <widget class="QFrame" name="sidebar">
-      <property name="maximumSize">
-       <size>
-        <width>95</width>
-        <height>16777215</height>
-       </size>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <layout class="QGridLayout" name="gridUser">
-         <item row="1" column="1">
-          <widget class="QLabel" name="label_2">
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>50</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>Score:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QLabel" name="label_4">
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>50</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>41241</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QLabel" name="label">
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>50</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>Username</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0" rowspan="3">
-          <widget class="QLabel" name="imgAvatar">
-           <property name="maximumSize">
-            <size>
-             <width>72</width>
-             <height>72</height>
-            </size>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="pixmap">
-            <pixmap resource="src.qrc">:/Facy-Client/images/phAvatar.png</pixmap>
-           </property>
-           <property name="scaledContents">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <widget class="QPushButton" name="btnLogout">
-         <property name="text">
-          <string>ausloggen</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="Line" name="line_3">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="verticalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QPushButton" name="btnStart">
-         <property name="text">
-          <string>Spiel starten</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="btnScoreboard">
-         <property name="text">
-          <string>Scoreboard</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="btnControl">
-         <property name="text">
-          <string>Verwaltung</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="btnHelp">
-         <property name="text">
-          <string>Hilfe</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QStackedWidget" name="mainWindow">
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
+    <item row="0" column="0" rowspan="2">
+     <widget class="QStackedWidget" name="facyWindow">
       <property name="currentIndex">
-       <number>3</number>
+       <number>1</number>
       </property>
-      <widget class="QWidget" name="mainStart" native="true">
-       <layout class="QGridLayout" name="gridLayout_2">
-        <item row="2" column="0">
-         <spacer name="hSpacerMainStart1">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
+      <widget class="QWidget" name="login">
+       <layout class="QGridLayout" name="gridLayout_13">
+        <item row="0" column="0">
+         <widget class="QFrame" name="loginTopbar">
+          <property name="styleSheet">
+           <string notr="true"/>
           </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
           </property>
-         </spacer>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_4">
+           <item>
+            <spacer name="loginHSpacerTopbar1">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QLabel" name="loginLblName">
+             <property name="font">
+              <font>
+               <pointsize>30</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>FACY</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="loginHSpacerTopbar2">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QLabel" name="loginImgLogo">
+             <property name="maximumSize">
+              <size>
+               <width>72</width>
+               <height>72</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap resource="src.qrc">:/Facy-Client/images/phLogo.png</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
         </item>
-        <item row="2" column="2">
-         <spacer name="hSpacerMainStart2">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
+        <item row="1" column="0">
+         <widget class="QFrame" name="loginWindow">
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
           </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
           </property>
-         </spacer>
-        </item>
-        <item row="3" column="1">
-         <spacer name="vSpacerMainStart2">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="0" column="1">
-         <spacer name="vSpacerMainStart1">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="2" column="1">
-         <layout class="QGridLayout" name="gridMainStart">
-          <item row="1" column="0" colspan="3">
-           <widget class="Line" name="line_2">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="0" colspan="3" alignment="Qt::AlignHCenter">
-           <widget class="QLabel" name="label_3">
-            <property name="text">
-             <string>Spieleinstellungen</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0" colspan="3">
-           <widget class="QComboBox" name="comboBox_2">
-            <property name="currentText">
-             <string/>
-            </property>
-            <property name="placeholderText">
-             <string>Gruppe</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0" colspan="3">
-           <widget class="QComboBox" name="comboBox">
-            <property name="placeholderText">
-             <string>Schwierigkeitsgrad</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="0" colspan="3">
-           <widget class="QPushButton" name="btnGame">
-            <property name="text">
-             <string>Starten/Beitreten</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0" colspan="3">
-           <widget class="Line" name="line">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-         </layout>
+          <layout class="QGridLayout" name="gridLayout_11">
+           <item row="0" column="1">
+            <spacer name="loginVSpacerMain1">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="2" column="2">
+            <spacer name="loginHSpacerMain2">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="3" column="1">
+            <spacer name="loginVSpacerMain2">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="2" column="0">
+            <spacer name="loginHSpacerMain1">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="2" column="1">
+            <layout class="QGridLayout" name="gridLayout_12">
+             <item row="6" column="0" colspan="3">
+              <widget class="QCommandLinkButton" name="loginClbSignUp">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>Registrieren</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_11">
+               <property name="text">
+                <string>Email-Adresse:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_12">
+               <property name="text">
+                <string>Passwort:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="2">
+              <widget class="QCheckBox" name="loginClbShowPw">
+               <property name="text">
+                <string>zeige pw</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QLineEdit" name="loginLeEmail"/>
+             </item>
+             <item row="7" column="0" colspan="3">
+              <widget class="QCommandLinkButton" name="loginClbForgotPw">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>Passwort vergessen?</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QLineEdit" name="loginLePassword">
+               <property name="echoMode">
+                <enum>QLineEdit::Password</enum>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="0" colspan="3">
+              <widget class="Line" name="line_6">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0" colspan="3" alignment="Qt::AlignHCenter">
+              <widget class="QLabel" name="label_13">
+               <property name="text">
+                <string>Login</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0" colspan="3">
+              <widget class="Line" name="line_7">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="0" colspan="3">
+              <widget class="QPushButton" name="loginBtnLogin">
+               <property name="text">
+                <string>Bestätigen</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="mainScoreboard">
-       <layout class="QGridLayout" name="gridLayout_4">
-        <item row="0" column="0">
-         <spacer name="hSpacerMainScoreboard1">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
+      <widget class="QWidget" name="main">
+       <layout class="QGridLayout" name="gridLayout_10">
+        <item row="0" column="0" rowspan="2">
+         <widget class="QFrame" name="sidebar">
+          <property name="maximumSize">
            <size>
-            <width>190</width>
-            <height>7</height>
+            <width>95</width>
+            <height>16777215</height>
            </size>
           </property>
-         </spacer>
+          <layout class="QVBoxLayout" name="verticalLayout">
+           <item>
+            <spacer name="verticalSpacer">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <layout class="QGridLayout" name="gridUser">
+             <item row="0" column="1">
+              <widget class="QLabel" name="label">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>Username</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QLabel" name="label_4">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>41241</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QLabel" name="label_2">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>Score:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0" rowspan="3">
+              <widget class="QLabel" name="imgAvatar">
+               <property name="maximumSize">
+                <size>
+                 <width>72</width>
+                 <height>72</height>
+                </size>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="pixmap">
+                <pixmap resource="src.qrc">:/Facy-Client/images/phAvatar.png</pixmap>
+               </property>
+               <property name="scaledContents">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnLogout">
+             <property name="text">
+              <string>ausloggen</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="Line" name="line_3">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="verticalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnStart">
+             <property name="text">
+              <string>Spiel starten</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnScoreboard">
+             <property name="text">
+              <string>Scoreboard</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnControl">
+             <property name="text">
+              <string>Verwaltung</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnHelp">
+             <property name="text">
+              <string>Hilfe</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
         </item>
         <item row="0" column="1">
-         <layout class="QGridLayout" name="gridMainScoreboard">
-          <item row="1" column="0">
-           <widget class="QComboBox" name="cbScoreboardGroup"/>
-          </item>
-          <item row="2" column="0">
-           <widget class="QTableWidget" name="tblScoreboard">
-            <row>
-             <property name="text">
-              <string>1</string>
+         <widget class="QFrame" name="topbar">
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <spacer name="hSpacerTopbar1">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
              </property>
-            </row>
-            <row>
-             <property name="text">
-              <string>2</string>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
              </property>
-            </row>
-            <row>
-             <property name="text">
-              <string>3</string>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QLabel" name="lblName">
+             <property name="font">
+              <font>
+               <pointsize>30</pointsize>
+              </font>
              </property>
-            </row>
-            <row>
              <property name="text">
-              <string>4</string>
+              <string>FACY</string>
              </property>
-            </row>
-            <row>
+            </widget>
+           </item>
+           <item>
+            <spacer name="hSpacerTopbar2">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QLabel" name="imgLogo">
+             <property name="maximumSize">
+              <size>
+               <width>72</width>
+               <height>72</height>
+              </size>
+             </property>
              <property name="text">
-              <string>5</string>
+              <string/>
              </property>
-            </row>
-            <row>
-             <property name="text">
-              <string>6</string>
+             <property name="pixmap">
+              <pixmap resource="src.qrc">:/Facy-Client/images/phLogo.png</pixmap>
              </property>
-            </row>
-            <row>
-             <property name="text">
-              <string>7</string>
+             <property name="scaledContents">
+              <bool>true</bool>
              </property>
-            </row>
-            <row>
-             <property name="text">
-              <string>8</string>
-             </property>
-            </row>
-            <row>
-             <property name="text">
-              <string>9</string>
-             </property>
-            </row>
-            <row>
-             <property name="text">
-              <string>10</string>
-             </property>
-            </row>
-            <column>
-             <property name="text">
-              <string>Username</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Highscore</string>
-             </property>
-            </column>
-            <item row="0" column="0">
-             <property name="text">
-              <string>User1</string>
-             </property>
-            </item>
-            <item row="0" column="1">
-             <property name="text">
-              <string>4252</string>
-             </property>
-            </item>
-            <item row="1" column="0">
-             <property name="text">
-              <string>User2</string>
-             </property>
-            </item>
-            <item row="1" column="1">
-             <property name="text">
-              <string>875</string>
-             </property>
-            </item>
-            <item row="2" column="0">
-             <property name="text">
-              <string>User3</string>
-             </property>
-            </item>
-            <item row="2" column="1">
-             <property name="text">
-              <string>231</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_5">
-            <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Scoreboard&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
         </item>
-        <item row="0" column="2">
-         <spacer name="hSpacerMainScorebaord2">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
+        <item row="1" column="1">
+         <widget class="QStackedWidget" name="mainWindow">
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
           </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="mainControl">
-       <layout class="QGridLayout" name="gridLayout">
-        <item row="0" column="0">
-         <widget class="QTabWidget" name="twControl">
-          <property name="accessibleName">
-           <string/>
-          </property>
-          <property name="tabShape">
-           <enum>QTabWidget::Rounded</enum>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
           </property>
           <property name="currentIndex">
            <number>2</number>
           </property>
-          <widget class="QWidget" name="tabPictures">
-           <attribute name="title">
-            <string>Bilder</string>
-           </attribute>
-           <layout class="QGridLayout" name="gridLayout_7">
-            <item row="0" column="0">
-             <widget class="QLineEdit" name="lineEdit">
-              <property name="placeholderText">
-               <string>Suchen nach...</string>
+          <widget class="QWidget" name="mainStart" native="true">
+           <layout class="QGridLayout" name="gridLayout_2">
+            <item row="2" column="0">
+             <spacer name="hSpacerMainStart1">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
               </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QScrollArea" name="scrollArea">
-              <property name="widgetResizable">
-               <bool>true</bool>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
               </property>
-              <widget class="QWidget" name="scrollAreaWidgetContents">
-               <property name="geometry">
-                <rect>
-                 <x>0</x>
-                 <y>0</y>
-                 <width>630</width>
-                 <height>227</height>
-                </rect>
-               </property>
-               <layout class="QVBoxLayout" name="verticalLayout_2">
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_2">
-                  <item>
-                   <layout class="QVBoxLayout" name="verticalLayout_3">
-                    <item>
-                     <widget class="QLabel" name="label_7">
-                      <property name="minimumSize">
-                       <size>
-                        <width>72</width>
-                        <height>72</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>72</width>
-                        <height>72</height>
-                       </size>
-                      </property>
-                      <property name="text">
-                       <string>picture</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="label_8">
-                      <property name="text">
-                       <string>name</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="label_9">
-                      <property name="text">
-                       <string>group</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </item>
-                  <item>
-                   <widget class="QPushButton" name="pushButton_5">
-                    <property name="text">
-                     <string>phImage</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QPushButton" name="pushButton_6">
-                    <property name="text">
-                     <string>phImage</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_3">
-                  <item>
-                   <widget class="QPushButton" name="pushButton_7">
-                    <property name="text">
-                     <string>PushButton</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QPushButton" name="pushButton_8">
-                    <property name="text">
-                     <string>PushButton</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QPushButton" name="pushButton_9">
-                    <property name="text">
-                     <string>PushButton</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-               </layout>
-              </widget>
-             </widget>
+             </spacer>
             </item>
-           </layout>
-          </widget>
-          <widget class="QWidget" name="tabGroups">
-           <attribute name="title">
-            <string>Gruppen</string>
-           </attribute>
-           <layout class="QGridLayout" name="gridLayout_5">
-            <item row="0" column="0">
-             <layout class="QGridLayout" name="gridMainScoreboard_2">
-              <item row="3" column="1">
-               <widget class="QPushButton" name="pushButton_3">
-                <property name="text">
-                 <string>Gruppe bearbeiten</string>
+            <item row="2" column="2">
+             <spacer name="hSpacerMainStart2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="3" column="1">
+             <spacer name="vSpacerMainStart2">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="0" column="1">
+             <spacer name="vSpacerMainStart1">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="2" column="1">
+             <layout class="QGridLayout" name="gridMainStart">
+              <item row="1" column="0" colspan="3">
+               <widget class="Line" name="line_2">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
                 </property>
                </widget>
               </item>
-              <item row="1" column="0" colspan="2">
-               <widget class="QTableWidget" name="tableWidget_2">
+              <item row="0" column="0" colspan="3" alignment="Qt::AlignHCenter">
+               <widget class="QLabel" name="label_3">
+                <property name="text">
+                 <string>Spieleinstellungen</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0" colspan="3">
+               <widget class="QComboBox" name="comboBox_2">
+                <property name="currentText">
+                 <string/>
+                </property>
+                <property name="placeholderText">
+                 <string>Gruppe</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0" colspan="3">
+               <widget class="QComboBox" name="comboBox">
+                <property name="placeholderText">
+                 <string>Schwierigkeitsgrad</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="0" colspan="3">
+               <widget class="QPushButton" name="btnGame">
+                <property name="text">
+                 <string>Starten/Beitreten</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0" colspan="3">
+               <widget class="Line" name="line">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="mainScoreboard">
+           <layout class="QGridLayout" name="gridLayout_4">
+            <item row="0" column="0">
+             <spacer name="hSpacerMainScoreboard1">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>190</width>
+                <height>7</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="0" column="1">
+             <layout class="QGridLayout" name="gridMainScoreboard">
+              <item row="1" column="0">
+               <widget class="QComboBox" name="cbScoreboardGroup"/>
+              </item>
+              <item row="2" column="0">
+               <widget class="QTableWidget" name="tblScoreboard">
                 <row>
                  <property name="text">
                   <string>1</string>
@@ -826,496 +841,758 @@ QFrame#gridCards &gt;*{
                 </item>
                </widget>
               </item>
-              <item row="0" column="0" colspan="2">
-               <widget class="QComboBox" name="comboBox_4">
-                <property name="placeholderText">
-                 <string>Sortieren nach</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0" colspan="2">
-               <widget class="Line" name="line_4">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="0">
-               <widget class="QPushButton" name="pushButton_2">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_5">
                 <property name="text">
-                 <string>neue Gruppe anlegen</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Scoreboard&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                </widget>
               </item>
              </layout>
             </item>
+            <item row="0" column="2">
+             <spacer name="hSpacerMainScorebaord2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
            </layout>
           </widget>
-          <widget class="QWidget" name="tabLogins">
-           <attribute name="title">
-            <string>Logins</string>
-           </attribute>
-           <layout class="QGridLayout" name="gridLayout_6">
+          <widget class="QWidget" name="mainControl">
+           <layout class="QGridLayout" name="gridLayout">
             <item row="0" column="0">
-             <layout class="QGridLayout" name="gridMainScoreboard_3">
-              <item row="3" column="1">
-               <widget class="QPushButton" name="pushButton_4">
-                <property name="text">
-                 <string>Benutzer bearbeiten</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0" colspan="2">
-               <widget class="QTableWidget" name="tableWidget_3">
-                <row>
-                 <property name="text">
-                  <string>1</string>
-                 </property>
-                </row>
-                <row>
-                 <property name="text">
-                  <string>2</string>
-                 </property>
-                </row>
-                <row>
-                 <property name="text">
-                  <string>3</string>
-                 </property>
-                </row>
-                <row>
-                 <property name="text">
-                  <string>4</string>
-                 </property>
-                </row>
-                <row>
-                 <property name="text">
-                  <string>5</string>
-                 </property>
-                </row>
-                <row>
-                 <property name="text">
-                  <string>6</string>
-                 </property>
-                </row>
-                <row>
-                 <property name="text">
-                  <string>7</string>
-                 </property>
-                </row>
-                <row>
-                 <property name="text">
-                  <string>8</string>
-                 </property>
-                </row>
-                <row>
-                 <property name="text">
-                  <string>9</string>
-                 </property>
-                </row>
-                <row>
-                 <property name="text">
-                  <string>10</string>
-                 </property>
-                </row>
-                <column>
-                 <property name="text">
-                  <string>Rolle</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>Username</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>Email</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>Status</string>
-                 </property>
-                </column>
+             <widget class="QTabWidget" name="twControl">
+              <property name="accessibleName">
+               <string/>
+              </property>
+              <property name="tabShape">
+               <enum>QTabWidget::Rounded</enum>
+              </property>
+              <property name="currentIndex">
+               <number>0</number>
+              </property>
+              <widget class="QWidget" name="tabPictures">
+               <attribute name="title">
+                <string>Bilder</string>
+               </attribute>
+               <layout class="QGridLayout" name="gridLayout_7">
                 <item row="0" column="0">
-                 <property name="text">
-                  <string>User</string>
-                 </property>
-                </item>
-                <item row="0" column="1">
-                 <property name="text">
-                  <string>User1</string>
-                 </property>
-                </item>
-                <item row="0" column="2">
-                 <property name="text">
-                  <string>user@bws-mail.de</string>
-                 </property>
-                </item>
-                <item row="0" column="3">
-                 <property name="text">
-                  <string>aktiv</string>
-                 </property>
+                 <widget class="QLineEdit" name="lineEdit">
+                  <property name="placeholderText">
+                   <string>Suchen nach...</string>
+                  </property>
+                 </widget>
                 </item>
                 <item row="1" column="0">
-                 <property name="text">
-                  <string>Admin</string>
-                 </property>
+                 <widget class="QScrollArea" name="scrollArea">
+                  <property name="widgetResizable">
+                   <bool>true</bool>
+                  </property>
+                  <widget class="QWidget" name="scrollAreaWidgetContents">
+                   <property name="geometry">
+                    <rect>
+                     <x>0</x>
+                     <y>0</y>
+                     <width>612</width>
+                     <height>210</height>
+                    </rect>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_2">
+                    <item>
+                     <layout class="QHBoxLayout" name="horizontalLayout_2">
+                      <item>
+                       <layout class="QVBoxLayout" name="verticalLayout_3">
+                        <item>
+                         <widget class="QLabel" name="label_7">
+                          <property name="minimumSize">
+                           <size>
+                            <width>72</width>
+                            <height>72</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>72</width>
+                            <height>72</height>
+                           </size>
+                          </property>
+                          <property name="text">
+                           <string>picture</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_8">
+                          <property name="text">
+                           <string>name</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_9">
+                          <property name="text">
+                           <string>group</string>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </item>
+                      <item>
+                       <widget class="QPushButton" name="pushButton_5">
+                        <property name="text">
+                         <string>phImage</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QPushButton" name="pushButton_6">
+                        <property name="text">
+                         <string>phImage</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </item>
+                    <item>
+                     <layout class="QHBoxLayout" name="horizontalLayout_3">
+                      <item>
+                       <widget class="QPushButton" name="pushButton_7">
+                        <property name="text">
+                         <string>PushButton</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QPushButton" name="pushButton_8">
+                        <property name="text">
+                         <string>PushButton</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QPushButton" name="pushButton_9">
+                        <property name="text">
+                         <string>PushButton</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </item>
+                   </layout>
+                  </widget>
+                 </widget>
                 </item>
-                <item row="1" column="1">
-                 <property name="text">
-                  <string>User2</string>
-                 </property>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="tabGroups">
+               <attribute name="title">
+                <string>Gruppen</string>
+               </attribute>
+               <layout class="QGridLayout" name="gridLayout_5">
+                <item row="0" column="0">
+                 <layout class="QGridLayout" name="gridMainScoreboard_2">
+                  <item row="3" column="1">
+                   <widget class="QPushButton" name="pushButton_3">
+                    <property name="text">
+                     <string>Gruppe bearbeiten</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="0" colspan="2">
+                   <widget class="QTableWidget" name="tableWidget_2">
+                    <row>
+                     <property name="text">
+                      <string>1</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>2</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>3</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>4</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>5</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>6</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>7</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>8</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>9</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>10</string>
+                     </property>
+                    </row>
+                    <column>
+                     <property name="text">
+                      <string>Username</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Highscore</string>
+                     </property>
+                    </column>
+                    <item row="0" column="0">
+                     <property name="text">
+                      <string>User1</string>
+                     </property>
+                    </item>
+                    <item row="0" column="1">
+                     <property name="text">
+                      <string>4252</string>
+                     </property>
+                    </item>
+                    <item row="1" column="0">
+                     <property name="text">
+                      <string>User2</string>
+                     </property>
+                    </item>
+                    <item row="1" column="1">
+                     <property name="text">
+                      <string>875</string>
+                     </property>
+                    </item>
+                    <item row="2" column="0">
+                     <property name="text">
+                      <string>User3</string>
+                     </property>
+                    </item>
+                    <item row="2" column="1">
+                     <property name="text">
+                      <string>231</string>
+                     </property>
+                    </item>
+                   </widget>
+                  </item>
+                  <item row="0" column="0" colspan="2">
+                   <widget class="QComboBox" name="comboBox_4">
+                    <property name="placeholderText">
+                     <string>Sortieren nach</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="0" colspan="2">
+                   <widget class="Line" name="line_4">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="0">
+                   <widget class="QPushButton" name="pushButton_2">
+                    <property name="text">
+                     <string>neue Gruppe anlegen</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
                 </item>
-                <item row="2" column="0">
-                 <property name="text">
-                  <string>User</string>
-                 </property>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="tabLogins">
+               <attribute name="title">
+                <string>Logins</string>
+               </attribute>
+               <layout class="QGridLayout" name="gridLayout_6">
+                <item row="0" column="0">
+                 <layout class="QGridLayout" name="gridMainScoreboard_3">
+                  <item row="3" column="1">
+                   <widget class="QPushButton" name="pushButton_4">
+                    <property name="text">
+                     <string>Benutzer bearbeiten</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="0" colspan="2">
+                   <widget class="QTableWidget" name="tableWidget_3">
+                    <row>
+                     <property name="text">
+                      <string>1</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>2</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>3</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>4</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>5</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>6</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>7</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>8</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>9</string>
+                     </property>
+                    </row>
+                    <row>
+                     <property name="text">
+                      <string>10</string>
+                     </property>
+                    </row>
+                    <column>
+                     <property name="text">
+                      <string>Rolle</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Username</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Email</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Status</string>
+                     </property>
+                    </column>
+                    <item row="0" column="0">
+                     <property name="text">
+                      <string>User</string>
+                     </property>
+                    </item>
+                    <item row="0" column="1">
+                     <property name="text">
+                      <string>User1</string>
+                     </property>
+                    </item>
+                    <item row="0" column="2">
+                     <property name="text">
+                      <string>user@bws-mail.de</string>
+                     </property>
+                    </item>
+                    <item row="0" column="3">
+                     <property name="text">
+                      <string>aktiv</string>
+                     </property>
+                    </item>
+                    <item row="1" column="0">
+                     <property name="text">
+                      <string>Admin</string>
+                     </property>
+                    </item>
+                    <item row="1" column="1">
+                     <property name="text">
+                      <string>User2</string>
+                     </property>
+                    </item>
+                    <item row="2" column="0">
+                     <property name="text">
+                      <string>User</string>
+                     </property>
+                    </item>
+                    <item row="2" column="1">
+                     <property name="text">
+                      <string>User3</string>
+                     </property>
+                    </item>
+                   </widget>
+                  </item>
+                  <item row="3" column="0">
+                   <widget class="QPushButton" name="pushButton_10">
+                    <property name="text">
+                     <string>neuen Admin anlegen</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="0" colspan="2">
+                   <widget class="Line" name="line_5">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="0" colspan="2">
+                   <widget class="QComboBox" name="comboBox_5">
+                    <property name="placeholderText">
+                     <string>Sortieren nach</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
                 </item>
-                <item row="2" column="1">
-                 <property name="text">
-                  <string>User3</string>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="mainGame">
+           <layout class="QGridLayout" name="gridLayout_9">
+            <item row="0" column="3">
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Minimum</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="0" column="0">
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Minimum</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>7</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="0" column="1" colspan="2">
+             <layout class="QGridLayout" name="gridGame">
+              <item row="0" column="0">
+               <widget class="QFrame" name="gridPicture">
+                <property name="minimumSize">
+                 <size>
+                  <width>300</width>
+                  <height>300</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>900</width>
+                  <height>900</height>
+                 </size>
+                </property>
+                <property name="sizeIncrement">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <property name="lineWidth">
+                 <number>1</number>
+                </property>
+                <widget class="QLabel" name="imgPicture">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>0</y>
+                   <width>300</width>
+                   <height>300</height>
+                  </rect>
                  </property>
-                </item>
+                 <property name="minimumSize">
+                  <size>
+                   <width>300</width>
+                   <height>300</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>300</width>
+                   <height>300</height>
+                  </size>
+                 </property>
+                 <property name="sizeIncrement">
+                  <size>
+                   <width>0</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="pixmap">
+                  <pixmap resource="src.qrc">:/Facy-Client/images/phPicture.png</pixmap>
+                 </property>
+                 <property name="scaledContents">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+                <widget class="QFrame" name="gridCards">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>0</y>
+                   <width>300</width>
+                   <height>300</height>
+                  </rect>
+                 </property>
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>300</width>
+                   <height>300</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>900</width>
+                   <height>900</height>
+                  </size>
+                 </property>
+                 <property name="sizeIncrement">
+                  <size>
+                   <width>0</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_8">
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="spacing">
+                   <number>0</number>
+                  </property>
+                  <item row="2" column="0">
+                   <widget class="QLabel" name="imgCard9">
+                    <property name="text">
+                     <string>c1</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="2">
+                   <widget class="QLabel" name="imgCard11">
+                    <property name="text">
+                     <string>c1</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="3">
+                   <widget class="QLabel" name="imgCard12">
+                    <property name="text">
+                     <string>c1</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="2">
+                   <widget class="QLabel" name="imgCard7">
+                    <property name="text">
+                     <string>c1</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="3">
+                   <widget class="QLabel" name="imgCard16">
+                    <property name="text">
+                     <string>c1</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="imgCard1">
+                    <property name="text">
+                     <string>c1</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QLabel" name="imgCard2">
+                    <property name="text">
+                     <string>c1</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="1">
+                   <widget class="QLabel" name="imgCard10">
+                    <property name="text">
+                     <string>c1</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="3">
+                   <widget class="QLabel" name="imgCard4">
+                    <property name="text">
+                     <string>c1</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="2">
+                   <widget class="QLabel" name="imgCard15">
+                    <property name="text">
+                     <string>c1</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="0">
+                   <widget class="QLabel" name="imgCard13">
+                    <property name="text">
+                     <string>c1</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QLabel" name="imgCard6">
+                    <property name="text">
+                     <string>c1</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="3">
+                   <widget class="QLabel" name="imgCard8">
+                    <property name="text">
+                     <string>c1</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="1">
+                   <widget class="QLabel" name="imgCard14">
+                    <property name="text">
+                     <string>c1</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="2">
+                   <widget class="QLabel" name="imgCard3">
+                    <property name="text">
+                     <string>c1</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QLabel" name="imgCard5">
+                    <property name="text">
+                     <string>c1</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
                </widget>
               </item>
-              <item row="3" column="0">
-               <widget class="QPushButton" name="pushButton_10">
+              <item row="1" column="0">
+               <widget class="QLineEdit" name="lineEdit_2"/>
+              </item>
+             </layout>
+            </item>
+            <item row="0" column="5">
+             <layout class="QVBoxLayout" name="verticalLayout_4">
+              <item>
+               <widget class="QLabel" name="label_6">
                 <property name="text">
-                 <string>neuen Admin anlegen</string>
+                 <string>imgTimeWIP</string>
                 </property>
                </widget>
               </item>
-              <item row="2" column="0" colspan="2">
-               <widget class="Line" name="line_5">
+              <item>
+               <widget class="QLabel" name="label_10">
+                <property name="text">
+                 <string>Zeit: </string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="verticalSpacer_3">
                 <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
+                 <enum>Qt::Vertical</enum>
                 </property>
-               </widget>
-              </item>
-              <item row="0" column="0" colspan="2">
-               <widget class="QComboBox" name="comboBox_5">
-                <property name="placeholderText">
-                 <string>Sortieren nach</string>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
                 </property>
-               </widget>
+               </spacer>
               </item>
              </layout>
             </item>
            </layout>
           </widget>
          </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="mainGame">
-       <layout class="QGridLayout" name="gridLayout_9">
-        <item row="0" column="3">
-         <spacer name="horizontalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Minimum</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="0" column="0">
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Minimum</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>7</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="0" column="1" colspan="2">
-         <layout class="QGridLayout" name="gridGame">
-          <item row="0" column="0">
-           <widget class="QFrame" name="gridPicture">
-            <property name="minimumSize">
-             <size>
-              <width>300</width>
-              <height>300</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>900</width>
-              <height>900</height>
-             </size>
-            </property>
-            <property name="sizeIncrement">
-             <size>
-              <width>0</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <property name="lineWidth">
-             <number>1</number>
-            </property>
-            <widget class="QLabel" name="imgPicture">
-             <property name="geometry">
-              <rect>
-               <x>0</x>
-               <y>0</y>
-               <width>300</width>
-               <height>300</height>
-              </rect>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>300</width>
-               <height>300</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>300</width>
-               <height>300</height>
-              </size>
-             </property>
-             <property name="sizeIncrement">
-              <size>
-               <width>0</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="pixmap">
-              <pixmap resource="src.qrc">:/Facy-Client/images/phPicture.png</pixmap>
-             </property>
-             <property name="scaledContents">
-              <bool>true</bool>
-             </property>
-            </widget>
-            <widget class="QFrame" name="gridCards">
-             <property name="geometry">
-              <rect>
-               <x>0</x>
-               <y>0</y>
-               <width>300</width>
-               <height>300</height>
-              </rect>
-             </property>
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>300</width>
-               <height>300</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>900</width>
-               <height>900</height>
-              </size>
-             </property>
-             <property name="sizeIncrement">
-              <size>
-               <width>0</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
-             </property>
-             <layout class="QGridLayout" name="gridLayout_8">
-              <property name="leftMargin">
-               <number>0</number>
-              </property>
-              <property name="topMargin">
-               <number>0</number>
-              </property>
-              <property name="rightMargin">
-               <number>0</number>
-              </property>
-              <property name="bottomMargin">
-               <number>0</number>
-              </property>
-              <property name="spacing">
-               <number>0</number>
-              </property>
-              <item row="2" column="0">
-               <widget class="QLabel" name="imgCard9">
-                <property name="text">
-                 <string>c1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="2">
-               <widget class="QLabel" name="imgCard11">
-                <property name="text">
-                 <string>c1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="3">
-               <widget class="QLabel" name="imgCard12">
-                <property name="text">
-                 <string>c1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="2">
-               <widget class="QLabel" name="imgCard7">
-                <property name="text">
-                 <string>c1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="3">
-               <widget class="QLabel" name="imgCard16">
-                <property name="text">
-                 <string>c1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="0">
-               <widget class="QLabel" name="imgCard1">
-                <property name="text">
-                 <string>c1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1">
-               <widget class="QLabel" name="imgCard2">
-                <property name="text">
-                 <string>c1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="1">
-               <widget class="QLabel" name="imgCard10">
-                <property name="text">
-                 <string>c1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="3">
-               <widget class="QLabel" name="imgCard4">
-                <property name="text">
-                 <string>c1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="2">
-               <widget class="QLabel" name="imgCard15">
-                <property name="text">
-                 <string>c1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="0">
-               <widget class="QLabel" name="imgCard13">
-                <property name="text">
-                 <string>c1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1">
-               <widget class="QLabel" name="imgCard6">
-                <property name="text">
-                 <string>c1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="3">
-               <widget class="QLabel" name="imgCard8">
-                <property name="text">
-                 <string>c1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="1">
-               <widget class="QLabel" name="imgCard14">
-                <property name="text">
-                 <string>c1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="2">
-               <widget class="QLabel" name="imgCard3">
-                <property name="text">
-                 <string>c1</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="imgCard5">
-                <property name="text">
-                 <string>c1</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLineEdit" name="lineEdit_2"/>
-          </item>
-         </layout>
-        </item>
-        <item row="0" column="5">
-         <layout class="QVBoxLayout" name="verticalLayout_4">
-          <item>
-           <widget class="QLabel" name="label_6">
-            <property name="text">
-             <string>imgTimeWIP</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_10">
-            <property name="text">
-             <string>Zeit: </string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="verticalSpacer_3">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
         </item>
        </layout>
       </widget>
