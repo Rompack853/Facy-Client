@@ -16,7 +16,7 @@ LogicController::LogicController() : QObject()
  * @param message
  */
 void LogicController::send(QString message){
-    qDebug() << "[" + QString::number(id) + "] sending: " + message;
+    qDebug() << "[" + id + "] sending: " + message;
     client->write(message.toLatin1());
 
 }//send()
@@ -28,10 +28,18 @@ void LogicController::send(QString message){
  */
 void LogicController::recieve(){
     QString input = client->readAll();
-    qDebug() << "[" + QString::number(id) + "] recieved: " + input;
+    qDebug() << "[" + id + "] recieved: " + input;
 
     //TODO when recieveing "CLOSE" -> connection got terminated -> Show to user
     //Here you can start working with all the Data
+    if(input.indexOf("setID_") == 0){
+        id = input.mid(6,input.length());
+    }//if
+
+    if(input == "CLOSED"){
+        //TODO inform the user, that the Connection has been
+        //lost due to a Server-Shutdown
+    }
 
 }//recieve()
 
