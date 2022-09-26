@@ -35,7 +35,8 @@ void FrmLogin::loadImages()
 
 void FrmLogin::on_btnLogin_clicked()
 {
-
+    frmMain.show();
+    this->close();
 }
 
 

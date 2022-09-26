@@ -15,7 +15,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget#centralwidget{
-	layoutStretch: 0,1;
+
 }
 
 /*====================
@@ -41,7 +41,6 @@ QFrame#frmMain *{
 	font-size: 16px;
 }
 QFrame#frmMain{
-	layoutStretch: 1,0,0,0,0;
 	background-color: rgb(210, 212, 223);
 }
 QFrame#frmMain .Spacer{

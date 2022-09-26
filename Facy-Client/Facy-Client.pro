@@ -9,26 +9,22 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    frmcontrol.cpp \
     frmgame.cpp \
     frmlogin.cpp \
     frmmain.cpp \
-    frmscoreboard.cpp \
+    logiccontroller.cpp \
     main.cpp
 
 HEADERS += \
-    frmcontrol.h \
     frmgame.h \
     frmlogin.h \
     frmmain.h \
-    frmscoreboard.h
+    logiccontroller.h
 
 FORMS += \
-    frmcontrol.ui \
     frmgame.ui \
     frmlogin.ui \
-    frmmain.ui \
-    frmscoreboard.ui
+    frmmain.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -2,5 +2,6 @@
     <qresource prefix="/Facy-Client">
         <file>images/phAvatar.png</file>
         <file>images/phLogo.png</file>
+        <file>images/phPicture.png</file>
     </qresource>
 </RCC>

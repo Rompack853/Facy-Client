@@ -5,6 +5,8 @@
 #include <QPixmap>
 #include <QDebug>
 
+#include "frmmain.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class FrmLogin; }
 QT_END_NAMESPACE
@@ -25,5 +27,6 @@ private slots:
 private:
     Ui::FrmLogin *ui;
     void loadImages();
+    FrmMain frmMain;
 };
 #endif // FRMLOGIN_H
