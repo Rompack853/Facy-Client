@@ -1,17 +1,25 @@
 #ifndef LOGICCONTROLLER_H
 #define LOGICCONTROLLER_H
 
-#include <QObject>
+#include <QTcpSocket>
 
-class LogicController
+class LogicController : public QObject
 {
+        Q_OBJECT
 public:
     LogicController();
 
-private:
-    QString sendData(QString key, QString input[]);
 
-    QString requestData(QString key);
+    void send(QString message);
+    void connectTo(QString serverIP, int port);
+    void disconnect();
+private:
+    QTcpSocket* client;
+
+    int id = 1;
+private slots:
+    void recieve();
+
 };
 
 enum backend

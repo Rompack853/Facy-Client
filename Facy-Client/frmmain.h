@@ -5,6 +5,7 @@
 #include <QDebug>
 #include "frmoptions.h"
 #include "frmaccount.h"
+#include "logiccontroller.h"
 
 namespace Ui {
 class FrmMain;
@@ -60,6 +61,7 @@ private:
 
     FrmOptions frmOptions;
     FrmAccount frmAccount;
+    LogicController* client;
 
     int windowWidth = 900;
     int windowHeight = 500;
