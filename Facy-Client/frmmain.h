@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QDebug>
+#include "frmoptions.h"
 
 namespace Ui {
 class FrmMain;
@@ -20,6 +21,7 @@ private slots:
 
     void changeFacyPage(int page);
 
+    void openOptions();
 
     //Login
     void on_loginClbShowPw_stateChanged(int page);
@@ -44,8 +46,14 @@ private slots:
 
     void on_btnGame_clicked();
 
+    void on_loginBtnOptions_clicked();
+
+    void on_btnOptions_clicked();
+
 private:
     Ui::FrmMain *ui;
+
+    FrmOptions frmOptions;
 
     int windowWidth = 900;
     int windowHeight = 500;

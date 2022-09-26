@@ -21,6 +21,12 @@ void FrmMain::changeFacyPage(int page)
     ui->facyWindow->setCurrentIndex(page);
 }
 
+void FrmMain::openOptions()
+{
+    frmOptions.show();
+    frmOptions.setWindowModality(Qt::ApplicationModal);
+}
+
 
 
 /*==================================================
@@ -44,6 +50,11 @@ void FrmMain::on_loginClbShowPw_stateChanged(int state)
 void FrmMain::on_loginBtnLogin_clicked()
 {
     changeFacyPage(1);
+}
+
+void FrmMain::on_loginBtnOptions_clicked()
+{
+    openOptions();
 }
 
 /*==================================================
@@ -77,6 +88,11 @@ void FrmMain::on_btnControl_clicked()
 void FrmMain::on_btnHelp_clicked()
 {
 
+}
+
+void FrmMain::on_btnOptions_clicked()
+{
+    openOptions();
 }
 
 void FrmMain::on_btnGame_clicked()
@@ -117,6 +133,12 @@ void FrmMain::resizeEvent(QResizeEvent *event)
  *      Main    -   Inhaltsbereich
  *
  ==================================================*/
+
+
+
+
+
+
 
 
 

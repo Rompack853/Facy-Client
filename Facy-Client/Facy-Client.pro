@@ -10,15 +10,18 @@ CONFIG += c++17
 
 SOURCES += \
     frmmain.cpp \
+    frmoptions.cpp \
     logiccontroller.cpp \
     main.cpp
 
 HEADERS += \
     frmmain.h \
+    frmoptions.h \
     logiccontroller.h
 
 FORMS += \
-    frmmain.ui
+    frmmain.ui \
+    frmoptions.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -31,4 +34,5 @@ RESOURCES += \
 
 DISTFILES += \
     images/phAvatar.png \
-    images/phLogo.png
+    images/phLogo.png \
+    options.ini
