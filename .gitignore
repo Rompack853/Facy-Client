@@ -16,3 +16,5 @@ build-Facy-Client-Desktop-Debug/moc_frmmain.cpp
 build-Facy-Client-Desktop-Debug/moc_client.cpp
 build-Facy-Client-Desktop-Debug/Makefile
 build-Facy-Client-Desktop-Debug/Facy-Client
+build-Facy-Client-Desktop-Debug/moc_frmaccount.cpp
+build-Facy-Client-Desktop-Debug/ui_frmaccount.h

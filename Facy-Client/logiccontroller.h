@@ -15,8 +15,7 @@ public:
     void disconnect();
 private:
     QTcpSocket* client;
-
-    int id = 1;
+    QString id = "1";
 private slots:
     void recieve();
 
