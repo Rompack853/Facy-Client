@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>900</width>
-    <height>500</height>
+    <height>517</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -164,7 +164,7 @@ QFrame#gridCards &gt;*{
     <item row="0" column="0" rowspan="2">
      <widget class="QStackedWidget" name="facyWindow">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="login">
        <layout class="QGridLayout" name="gridLayout_13">
@@ -636,7 +636,7 @@ QFrame#gridCards &gt;*{
           <property name="currentIndex">
            <number>2</number>
           </property>
-          <widget class="QWidget" name="mainStart" native="true">
+          <widget class="QWidget" name="mainStart">
            <layout class="QGridLayout" name="gridLayout_2">
             <item row="2" column="0">
              <spacer name="hSpacerMainStart1">
@@ -915,7 +915,7 @@ QFrame#gridCards &gt;*{
                      <x>0</x>
                      <y>0</y>
                      <width>612</width>
-                     <height>210</height>
+                     <height>227</height>
                     </rect>
                    </property>
                    <layout class="QVBoxLayout" name="verticalLayout_2">

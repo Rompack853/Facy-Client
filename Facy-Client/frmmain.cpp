@@ -24,7 +24,11 @@ void FrmMain::changeFacyPage(int page)
 void FrmMain::openOptions()
 {
     frmOptions.show();
-    frmOptions.setWindowModality(Qt::ApplicationModal);
+}
+
+void FrmMain::openAccount()
+{
+    frmAccount.show();
 }
 
 
@@ -142,4 +146,10 @@ void FrmMain::resizeEvent(QResizeEvent *event)
 
 
 
+
+
+void FrmMain::on_loginClbSignUp_clicked()
+{
+    openAccount();
+}
 
