@@ -1,7 +1,8 @@
 #ifndef LOGICCONTROLLER_H
 #define LOGICCONTROLLER_H
 
-#include <QTcpSocket>
+//#include <QTcpSocket>
+#include <QSslSocket>
 
 
 class LogicController : public QObject
@@ -13,13 +14,12 @@ public:
 
     void send(QString message);
     void connectTo(QString serverIP, int port);
-    void disconnect();
 
     QString checkEmail(QString email);
     QList<QString> checkPassword(QString password);
 
 private:
-    QTcpSocket* client;
+    QSslSocket* client;
     QString id = "1";
 
     QList<QString> error =
@@ -37,6 +37,8 @@ private:
 
 private slots:
     void recieve();
+    void disconnect();
+    void sslErrors(QList<QSslError> sslErrors);
 
 };
 

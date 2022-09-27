@@ -1,4 +1,12 @@
 #include "logiccontroller.h"
+#include <QSslKey>
+#include <QSslCertificate>
+
+/*
+ * Attention: Not all of the Code in this Class was written by the Team:
+ * Encryption with QSslSocket has been inspired by:
+ * https://github.com/jbagg/QSslSocket-example
+ * */
 
 /**
  * Constructor
@@ -6,8 +14,16 @@
  */
 LogicController::LogicController() : QObject()
 {
-    client = new QTcpSocket();
-    connect(client, SIGNAL(readyRead()), this ,SLOT(recieve()));
+    client = new QSslSocket();
+    connect(client, SIGNAL(readyRead()), this, SLOT(recieve()));
+    connect(client, SIGNAL(disconnected()), this, SLOT(disconnect()));
+    connect(client, SIGNAL(sslErrors(QList<QSslError>)), this, SLOT(sslErrors(QList<QSslError>)));
+
+    client->setPrivateKey("../Encryption/blue_local.key");
+    client->setLocalCertificate("../Encryption/blue_local.pem");
+    client->setPeerVerifyMode(QSslSocket::VerifyNone);
+
+    //connect(client, SIGNAL(readyRead()), this ,SLOT(recieve()));
 }//Constuctor()
 
 /**
@@ -16,8 +32,14 @@ LogicController::LogicController() : QObject()
  * @param message
  */
 void LogicController::send(QString message){
-    qDebug() << "[" + id + "] sending: " + message;
-    client->write(message.toLatin1());
+    if(client->waitForEncrypted(5000)){
+        qDebug() << "[" + id + "] sending: " + message;
+        client->write(message.toLatin1());
+    } else {
+        //verbindung fehlgeschlagen
+        qDebug() << "unable to connect to server.";
+        exit(0);
+    }
 
 }//send()
 
@@ -51,7 +73,8 @@ void LogicController::recieve(){
  */
 void LogicController::connectTo(QString serverIP, int port){
     qDebug() << "connecting...";
-    client->connectToHost(serverIP, port);
+    //client->connectToHost(serverIP, port);
+    client->connectToHostEncrypted(serverIP, port);
 }//connect()
 
 /**
@@ -149,4 +172,16 @@ QList<QString> LogicController::checkPassword(QString password)
         out[4] = "";
     }
     return out;
+}//disconnect()
+
+/**
+ * Prints SslErrors to the Console
+ * @brief LogicController::sslErrors
+ * @param errors
+ */
+void LogicController::sslErrors(QList<QSslError> errors){
+
+    for(QSslError error: errors){
+        qDebug() << error.errorString();
+    }//for
 }
