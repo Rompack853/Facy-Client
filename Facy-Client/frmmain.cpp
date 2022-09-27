@@ -75,7 +75,11 @@ void FrmMain::on_loginClbShowPw_stateChanged(int state)
 
 void FrmMain::on_loginBtnLogin_clicked()
 {
-    changeFacyPage(1);
+    //changeFacyPage(1);
+    QString email = ui->loginLeEmail->text();
+    QString password = ui->loginLePassword->text();
+    qDebug() << client->checkEmail(email);
+    qDebug() << client->checkPassword(password);
 }
 
 void FrmMain::on_loginBtnOptions_clicked()

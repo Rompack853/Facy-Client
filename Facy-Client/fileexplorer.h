@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QFileSystemModel>
+#include <QVector>
 
 namespace Ui {
 class FileExplorer;
@@ -19,11 +20,14 @@ public:
 private slots:
     void on_directoryView_clicked(QModelIndex index);
 
+    void on_fileView_clicked(const QModelIndex &index);
+
 private:
     Ui::FileExplorer *ui;
     QFileSystemModel *directory;
     QFileSystemModel *files;
     QString sPath;
+    QVector<QImage> images;
 };
 
 #endif // FILEEXPLORER_H

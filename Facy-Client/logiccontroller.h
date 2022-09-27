@@ -3,6 +3,7 @@
 
 #include <QTcpSocket>
 
+
 class LogicController : public QObject
 {
         Q_OBJECT
@@ -13,17 +14,43 @@ public:
     void send(QString message);
     void connectTo(QString serverIP, int port);
     void disconnect();
+
+    QString checkEmail(QString email);
+    QList<QString> checkPassword(QString password);
+
 private:
     QTcpSocket* client;
     QString id = "1";
+
+    QList<QString> error =
+    {
+        //Email
+        "Email ungültig",
+
+        //Password
+        "Großbuchstabe fehlt",
+        "Kleinbuchstabe fehlt",
+        "Zahl fehlt",
+        "Zeichen fehlt",
+        "Passwort zu kurz"
+    };
+
 private slots:
     void recieve();
 
 };
 
-enum backend
+enum errorE
 {
-    USERDATA
+    //Email
+    EMAIL,
+
+    //Password
+    PW_UPPERCASE,
+    PW_LOWERCASE,
+    PW_NUMBER,
+    PW_SYMBOL,
+    PW_LENGTH
 };
 
 #endif // LOGICCONTROLLER_H

@@ -6,6 +6,7 @@
 #include "frmoptions.h"
 #include "frmaccount.h"
 #include "fileexplorer.h"
+#include "logiccontroller.h"
 
 namespace Ui {
 class FrmMain;

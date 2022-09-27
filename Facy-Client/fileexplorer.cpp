@@ -37,3 +37,9 @@ void FileExplorer::on_directoryView_clicked(QModelIndex index)
     ui->fileView->setRootIndex(files->setRootPath(path));
 }
 
+
+void FileExplorer::on_fileView_clicked(const QModelIndex &index)
+{
+    //images.append(files->fileInfo(index).absoluteFilePath());
+}
+
