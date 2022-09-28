@@ -2,8 +2,11 @@
 #define LOGICCONTROLLER_H
 
 //#include <QTcpSocket>
+#include <QDataStream>
+#include <QImage>
 #include <QSslSocket>
-
+#include <QSslKey>
+#include <QSslCertificate>
 
 class LogicController : public QObject
 {
@@ -17,6 +20,8 @@ public:
 
     QString checkEmail(QString email);
     QList<QString> checkPassword(QString password);
+    QList<QByteArray> convertImageToByte(QList<QImage> imgList);
+    QList<QImage> convertByteToImage(QList<QByteArray> byteList);
 
 private:
     QSslSocket* client;

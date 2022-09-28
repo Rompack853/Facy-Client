@@ -1,6 +1,4 @@
 #include "logiccontroller.h"
-#include <QSslKey>
-#include <QSslCertificate>
 
 /*
  * Attention: Not all of the Code in this Class was written by the Team:
@@ -142,8 +140,7 @@ QList<QString> LogicController::checkPassword(QString password)
     QString specialCharacters = " !#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
     specialCharacters += '"';
 
-    QChar temp;
-    foreach (temp, password)
+    for (QChar temp: password)
     {
         //Check1: if character is uppercase
         if(temp.isUpper())
@@ -184,4 +181,31 @@ void LogicController::sslErrors(QList<QSslError> errors){
     for(QSslError error: errors){
         qDebug() << error.errorString();
     }//for
+}
+
+QList<QByteArray> LogicController::convertImageToByte(QList<QImage> imgList)
+{
+    QList<QByteArray> out;
+
+    for(QImage img: imgList)
+    {
+        QByteArray byteArray;
+        QDataStream ds(&byteArray, QIODevice::ReadWrite);
+        ds.readRawData((char*)img.bits(), img.sizeInBytes());
+        ds.device()->seek(0);
+        out.append(byteArray);
+    }
+
+    return out;
+}
+
+QList<QImage> LogicController::convertByteToImage(QList<QByteArray> byteList)
+{
+    QList<QImage> out;
+
+    for(QByteArray ba: byteList)
+    {
+        out.append(QImage::fromData(ba));
+    }
+    return out;
 }

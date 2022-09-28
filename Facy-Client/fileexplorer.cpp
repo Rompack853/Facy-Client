@@ -38,8 +38,12 @@ void FileExplorer::on_directoryView_clicked(QModelIndex index)
 }
 
 
-void FileExplorer::on_fileView_clicked(const QModelIndex &index)
+void FileExplorer::on_fileView_clicked(QModelIndex index)
 {
-    //images.append(files->fileInfo(index).absoluteFilePath());
+    QString path = files->fileInfo(index).absoluteFilePath();
+    QImage img(path);
+    selectedImages.append(img);
+
+    qDebug() << selectedImages;
 }
 
