@@ -40,10 +40,25 @@ void FileExplorer::on_directoryView_clicked(QModelIndex index)
 
 void FileExplorer::on_fileView_clicked(QModelIndex index)
 {
+    QString fileName = files->fileName(index);
     QString path = files->fileInfo(index).absoluteFilePath();
     QImage img(path);
-    selectedImages.append(img);
 
-    qDebug() << selectedImages;
+    bool ok = true;
+    for(QString name: selectedImageNames)
+    {
+        if(name == fileName)
+        {
+            ok = false;
+        }
+    }
+    if(ok)
+    {
+        selectedImageNames.append(fileName);
+        selectedImages.append(img);
+    }
+
+
+    qDebug() << "Selected Images:\n" << selectedImages;
 }
 

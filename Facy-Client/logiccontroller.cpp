@@ -183,29 +183,39 @@ void LogicController::sslErrors(QList<QSslError> errors){
     }//for
 }
 
-QList<QByteArray> LogicController::convertImageToByte(QList<QImage> imgList)
+/**
+ * @brief LogicController::convertImageToByte
+ * @param img
+ * @return
+ */
+QByteArray LogicController::convertImageToByte(QImage* img)
 {
-    QList<QByteArray> out;
+    //ByteArray Output
+    QByteArray out;
 
-    for(QImage img: imgList)
-    {
-        QByteArray byteArray;
-        QDataStream ds(&byteArray, QIODevice::ReadWrite);
-        ds.readRawData((char*)img.bits(), img.sizeInBytes());
-        ds.device()->seek(0);
-        out.append(byteArray);
-    }
+    //Filling ByteArray with data from image
+    out = out.fromRawData((const char*) img->bits(), img->sizeInBytes());
 
     return out;
 }
 
-QList<QImage> LogicController::convertByteToImage(QList<QByteArray> byteList)
+// WIP NOT WORKING AT THE MOMENT
+// Problem: Can't create an Image with data from byteArray, out = null
+/**
+ * @brief LogicController::convertByteToImage
+ * @param byteArray
+ * @return
+ */
+QImage* LogicController::convertByteToImage(QByteArray byteArray)
 {
-    QList<QImage> out;
+    //Image Output
+    QImage* out = new QImage(10, 10, QImage::Format_RGB888);
+    out = new QImage(out->fromData(reinterpret_cast<const uchar *>(byteArray.data()),byteArray.size()));
 
-    for(QByteArray ba: byteList)
-    {
-        out.append(QImage::fromData(ba));
-    }
+    //out = QImage::fromData(byteArray);
+    //bool ok = false;
+    //bool ok = out->loadFromData((const char*)byteArray.data(), byteArray.length());
+    //out->loadFromData(reinterpret_cast<const uchar *>(byteArray.data()),byteArray.length());
+    //qDebug() <<"FUCKING IMAGE " << ok;
     return out;
 }

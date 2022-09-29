@@ -7,6 +7,11 @@
 #include <QSslSocket>
 #include <QSslKey>
 #include <QSslCertificate>
+#include <QTextCodec>
+#include <QPixmap>
+#include <QFile>
+#include <QIODevice>
+#include <QByteArray>
 
 class LogicController : public QObject
 {
@@ -20,8 +25,8 @@ public:
 
     QString checkEmail(QString email);
     QList<QString> checkPassword(QString password);
-    QList<QByteArray> convertImageToByte(QList<QImage> imgList);
-    QList<QImage> convertByteToImage(QList<QByteArray> byteList);
+    QByteArray convertImageToByte(QImage* img);
+    QImage* convertByteToImage(QByteArray byteArray);
 
 private:
     QSslSocket* client;

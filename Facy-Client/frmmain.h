@@ -7,6 +7,7 @@
 #include "frmaccount.h"
 #include "fileexplorer.h"
 #include "logiccontroller.h"
+#include "QFileDialog"
 
 namespace Ui {
 class FrmMain;

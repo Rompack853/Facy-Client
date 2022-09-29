@@ -6,16 +6,16 @@ FrmMain::FrmMain(QWidget *parent) :
     ui(new Ui::FrmMain)
 {
     ui->setupUi(this);
-    changeFacyPage(0);
-    changeMainPage(0);
+    changeFacyPage(1);
+    changeMainPage(2);
 
     //================================Eingefuegt von Roman=========
     qDebug() << "Info: Server muss vor dem Client gestartet werden.\n"
                 "ansonsten keine Verbingung möglich.";
     //starts with a connect to the Server
     client = new LogicController();
-    client->connectTo("127.0.0.1", 8080);
-    client->send("Test Nachricht.");
+    //client->connectTo("127.0.0.1", 8080);
+    //client->send("Test Nachricht.");
     /*TODO implement all actions in this application when recieving
     codes and Data from the Server*/
     //================================Eingefuegt von Roman=========
@@ -75,7 +75,7 @@ void FrmMain::on_loginClbShowPw_stateChanged(int state)
 
 void FrmMain::on_loginBtnLogin_clicked()
 {
-    //changeFacyPage(1);
+    changeFacyPage(1);
     QString email = ui->loginLeEmail->text();
     QString password = ui->loginLePassword->text();
     qDebug() << client->checkEmail(email);
@@ -181,9 +181,36 @@ void FrmMain::resizeEvent(QResizeEvent *event)
 
 
 
-
+/**
+ * @brief FrmMain::on_btnUploadPictures_clicked
+ */
 void FrmMain::on_btnUploadPictures_clicked()
 {
-    openWindow(FILEEXPLORER);
+    //open Filebrowser to select an image
+    QFileDialog fileDialog(this);
+    fileDialog.setFileMode(QFileDialog::ExistingFile);
+    QString path = "C:/Users/mondw/Documents/GitHub/Facy-Client/Facy-Client/images";
+    QString filter = "Images (*.png *.xpm *.jpg)";
+    QString filename = fileDialog.getOpenFileName(this, "Open files",path ,filter);
+
+    //save selected image as QImage
+    QImage* tempImg = new QImage(filename);
+
+    if(!tempImg->isNull())
+    {
+
+        //Consoleoutput for properties of the selected image
+        qDebug() << "SelectedImage:" << *tempImg;
+
+        QByteArray tempBa = client->convertImageToByte(tempImg);
+
+        //currently not working: returns QImage(null)
+        QImage* tempImg = client->convertByteToImage(tempBa);
+
+        //Consoleoutput for properties of the converted image (to bytes and back to image)
+        qDebug() << "\nConvertedImgList:" << *tempImg;
+    }
+
+
 }
 

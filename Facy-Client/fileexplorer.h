@@ -29,6 +29,7 @@ private:
     QFileSystemModel *files;
     QString sPath;
     QList<QImage> selectedImages;
+    QList<QString> selectedImageNames;
 };
 
 #endif // FILEEXPLORER_H
