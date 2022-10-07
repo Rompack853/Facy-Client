@@ -3,5 +3,19 @@
         <file>images/phAvatar.png</file>
         <file>images/phLogo.png</file>
         <file>images/phPicture.png</file>
+        <file>fonts/Quantico/Quantico-Bold.ttf</file>
+        <file>fonts/Quantico/Quantico-BoldItalic.ttf</file>
+        <file>fonts/Quantico/Quantico-Italic.ttf</file>
+        <file>fonts/Quantico/Quantico-Regular.ttf</file>
+        <file>images/hide24x.png</file>
+        <file>images/hide32x.png</file>
+        <file>images/show24x.png</file>
+        <file>images/show32x.png</file>
+        <file>images/settings24x.png</file>
+        <file>images/settings32x.png</file>
+        <file>images/help24x.png</file>
+        <file>images/help32x.png</file>
+        <file>images/info24x.png</file>
+        <file>images/info32x.png</file>
     </qresource>
 </RCC>

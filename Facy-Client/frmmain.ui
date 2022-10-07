@@ -11,11 +11,55 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Facy</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget#centralwidget{
+   <string notr="true">
+QFrame#loginTopbar, #loginWindow, #topbar, #sidebar, QWidget#mainControl, #mainGame, #mainScoreboard, #mainStart{
+	background-color: rgb(210, 210, 220);
+	border: 3px ridge rgb(150, 150, 150);
+}
 
+QLabel#loginLblName, #mainLblName{
+	font-family: &quot;Quantico&quot;, &quot;Lucida Console&quot;, &quot;Arial&quot;;
+	font-weight: bold;
+	font-size: 50px;
+}
+QLineEdit{
+	min-height: 30px;
+}
+
+QPushButton{
+	min-height: 30px;
+	border: 2px outset rgb(130, 130, 130);
+	border-radius: 1px;
+	background-color: 
+		qlineargradient(
+			spread:pad, x1:1, y1:0, x2:1, y2:1,
+			stop:0.5 rgba(240, 240, 240, 255),
+			stop:1 rgba(190, 190, 190, 255)
+		);
+}
+
+QPushButton::Hover{
+	border: 2px outset rgba(50, 50, 150, 200);
+	background-color: 
+		qlineargradient(
+			spread:pad, x1:1, y1:0, x2:1, y2:1,
+			stop:0.5 rgba(190, 190, 250, 255),
+			stop:1 rgba(140, 140, 200, 255)
+		);
+}
+
+QPushButton::Pressed{
+	border: 2px inset rgb(130, 130, 130);
+	border-radius: 1px;
+	background-color: 
+		qlineargradient(
+			spread:pad, x1:1, y1:0, x2:1, y2:1,
+			stop:0.5 rgba(240, 240, 240, 255),
+			stop:1 rgba(190, 190, 190, 255)
+		);
 }
 /*==============================
 *
@@ -23,7 +67,6 @@
 *
 ==============================*/
 QFrame#loginTopbar{
-	background-color: rgb(210, 212, 223);
 	min-height: 75px;
 	max-height: 100px;
 }
@@ -44,16 +87,42 @@ QFrame#loginWindow *{
 	font-size: 16px;
 }
 QFrame#loginWindow{
-	background-color: rgb(210, 212, 223);
+	
 }
 QFrame#loginWindow .Spacer{
 	max-height: 10px;
 
 
 }
+QLineEdit#loginLeEmail, #loginLePassword{
+	min-width: 200px;
+}
+QPushButton#loginBtnOptions{
+	text-align: center;
+	min-width: 32px;
+	min-height: 32px;
+	max-width: 32px;
+	max-height: 32px;
+	border: 0px;
+	background-color: rgba(0, 0, 0, 0);
+	image: url(:/Facy-Client/images/settings32x.png);
+}
 
+QCheckBox#loginCbShowPw::indicator:checked{
+	image: url(:/Facy-Client/images/hide32x.png);
+}
+QCheckBox#loginCbShowPw::indicator:unchecked{
+	image: url(:/Facy-Client/images/show32x.png);
+}
 
-
+QCommandLinkButton#loginClbSignUp{
+	border: 0px;
+	background-color: rgba(0, 0, 0, 0);
+}
+QCommandLinkButton#loginClbForgotPw{
+	border: 0px;
+	background-color: rgba(0, 0, 0, 0);
+}
 
 /*==============================
 *
@@ -96,7 +165,27 @@ QLabel#imgAvatar{
 	min-width: 72px;
 	min-height: 72px;
 }
-
+QPushButton#sidebarBtnOptions{
+	border: 0px;
+	background-color: rgba(0, 0, 0 ,0); 
+	image: url(:/Facy-Client/images/settings32x.png);
+	max-width: 32px;
+	max-height: 32px;
+}
+QPushButton#sidebarBtnHelp{
+	border: 0px;
+	background-color: rgba(0, 0, 0 ,0); 
+	image: url(:/Facy-Client/images/help32x.png);
+	max-width: 32px;
+	max-height: 32px;
+}
+QPushButton#sidebarBtnInfo{
+	border: 0px;
+	background-color: rgba(0, 0, 0 ,0); 
+	image: url(:/Facy-Client/images/info32x.png);
+	max-width: 32px;
+	max-height: 32px;
+}
 /*==============================
 *
 *		Main - Inhaltsbereich
@@ -129,8 +218,8 @@ QFrame#mainWindow .Spacer{
 *		Control
 ====================*/
 QTabBar::tab{
-	height: 50px;
-	width: 200px;
+	height: 30px;
+	width: 190px;
 }
 
 /*====================
@@ -164,7 +253,7 @@ QFrame#gridCards &gt;*{
     <item row="0" column="0" rowspan="2">
      <widget class="QStackedWidget" name="facyWindow">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="login">
        <layout class="QGridLayout" name="gridLayout_13">
@@ -197,7 +286,9 @@ QFrame#gridCards &gt;*{
             <widget class="QLabel" name="loginLblName">
              <property name="font">
               <font>
-               <pointsize>30</pointsize>
+               <family>Quantico</family>
+               <pointsize>-1</pointsize>
+               <bold>true</bold>
               </font>
              </property>
              <property name="text">
@@ -264,7 +355,7 @@ QFrame#gridCards &gt;*{
            </item>
            <item row="2" column="1">
             <layout class="QGridLayout" name="gridLayout_12">
-             <item row="6" column="0" colspan="3">
+             <item row="6" column="1" colspan="3">
               <widget class="QCommandLinkButton" name="loginClbSignUp">
                <property name="maximumSize">
                 <size>
@@ -272,64 +363,23 @@ QFrame#gridCards &gt;*{
                  <height>50</height>
                 </size>
                </property>
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>-1</pointsize>
+                 <bold>true</bold>
+                 <kerning>true</kerning>
+                </font>
+               </property>
+               <property name="layoutDirection">
+                <enum>Qt::LeftToRight</enum>
+               </property>
                <property name="text">
                 <string>Registrieren</string>
                </property>
               </widget>
              </item>
-             <item row="4" column="0" colspan="3">
-              <widget class="QPushButton" name="loginBtnLogin">
-               <property name="text">
-                <string>Bestätigen</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="1">
-              <widget class="QLineEdit" name="loginLeEmail"/>
-             </item>
-             <item row="3" column="2">
-              <widget class="QCheckBox" name="loginClbShowPw">
-               <property name="text">
-                <string>zeige pw</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="0" colspan="3" alignment="Qt::AlignHCenter">
-              <widget class="QLabel" name="label_13">
-               <property name="text">
-                <string>Login</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="0" colspan="3">
-              <widget class="Line" name="line_7">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-              </widget>
-             </item>
-             <item row="5" column="0" colspan="3">
-              <widget class="Line" name="line_6">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="1">
-              <widget class="QLineEdit" name="loginLePassword">
-               <property name="echoMode">
-                <enum>QLineEdit::Password</enum>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="0">
-              <widget class="QLabel" name="label_11">
-               <property name="text">
-                <string>Email-Adresse:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="7" column="0" colspan="3">
+             <item row="7" column="1" colspan="3">
               <widget class="QCommandLinkButton" name="loginClbForgotPw">
                <property name="maximumSize">
                 <size>
@@ -337,22 +387,144 @@ QFrame#gridCards &gt;*{
                  <height>50</height>
                 </size>
                </property>
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>-1</pointsize>
+                 <bold>true</bold>
+                </font>
+               </property>
                <property name="text">
                 <string>Passwort vergessen?</string>
                </property>
               </widget>
              </item>
-             <item row="3" column="0">
-              <widget class="QLabel" name="label_12">
-               <property name="text">
-                <string>Passwort:</string>
+             <item row="7" column="0">
+              <spacer name="horizontalSpacer_4">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item row="6" column="0">
+              <spacer name="horizontalSpacer_3">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item row="7" column="4">
+              <spacer name="horizontalSpacer_5">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item row="6" column="4">
+              <spacer name="horizontalSpacer_6">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item row="5" column="0" colspan="5">
+              <widget class="Line" name="line_6">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
                </property>
               </widget>
              </item>
-             <item row="2" column="2">
+             <item row="4" column="0" colspan="5">
+              <widget class="QPushButton" name="loginBtnLogin">
+               <property name="text">
+                <string>Bestätigen</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="4">
               <widget class="QPushButton" name="loginBtnOptions">
                <property name="text">
-                <string>Einstellungen</string>
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="4">
+              <widget class="QCheckBox" name="loginCbShowPw">
+               <property name="layoutDirection">
+                <enum>Qt::LeftToRight</enum>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0" colspan="4">
+              <widget class="QLineEdit" name="loginLeEmail">
+               <property name="placeholderText">
+                <string>Email-Adresse</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0" colspan="4">
+              <widget class="QLineEdit" name="loginLePassword">
+               <property name="echoMode">
+                <enum>QLineEdit::Password</enum>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+               </property>
+               <property name="placeholderText">
+                <string>Passwort</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0" colspan="5">
+              <widget class="Line" name="line_7">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0" colspan="5">
+              <widget class="QLabel" name="loginLblTitle">
+               <property name="font">
+                <font>
+                 <pointsize>-1</pointsize>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Login</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
                </property>
               </widget>
              </item>
@@ -489,7 +661,7 @@ QFrame#gridCards &gt;*{
             </layout>
            </item>
            <item>
-            <widget class="QPushButton" name="btnLogout">
+            <widget class="QPushButton" name="sidebarBtnLogout">
              <property name="text">
               <string>ausloggen</string>
              </property>
@@ -516,39 +688,99 @@ QFrame#gridCards &gt;*{
             </spacer>
            </item>
            <item>
-            <widget class="QPushButton" name="btnStart">
+            <widget class="QPushButton" name="sidebarBtnStart">
              <property name="text">
               <string>Spiel starten</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="btnScoreboard">
+            <spacer name="verticalSpacer_6">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="sidebarBtnScoreboard">
              <property name="text">
               <string>Scoreboard</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="btnControl">
+            <spacer name="verticalSpacer_5">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="sidebarBtnControl">
              <property name="text">
               <string>Verwaltung</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="btnHelp">
-             <property name="text">
-              <string>Hilfe</string>
+            <spacer name="verticalSpacer_4">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="Line" name="line_8">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="btnOptions">
-             <property name="text">
-              <string>Einstellungen</string>
+            <layout class="QHBoxLayout" name="horizontalLayout_6">
+             <property name="bottomMargin">
+              <number>0</number>
              </property>
-            </widget>
+             <item>
+              <widget class="QPushButton" name="sidebarBtnOptions">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="sidebarBtnHelp">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="sidebarBtnInfo">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </item>
           </layout>
          </widget>
@@ -579,10 +811,12 @@ QFrame#gridCards &gt;*{
             </spacer>
            </item>
            <item>
-            <widget class="QLabel" name="lblName">
+            <widget class="QLabel" name="mainLblName">
              <property name="font">
               <font>
-               <pointsize>30</pointsize>
+               <family>Quantico</family>
+               <pointsize>-1</pointsize>
+               <bold>true</bold>
               </font>
              </property>
              <property name="text">
@@ -634,7 +868,7 @@ QFrame#gridCards &gt;*{
            <enum>QFrame::Raised</enum>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>3</number>
           </property>
           <widget class="QWidget" name="mainStart">
            <layout class="QGridLayout" name="gridLayout_2">
@@ -714,6 +948,21 @@ QFrame#gridCards &gt;*{
                 <property name="placeholderText">
                  <string>Gruppe</string>
                 </property>
+                <item>
+                 <property name="text">
+                  <string>Gruppe1</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Gruppe2</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Gruppe3</string>
+                 </property>
+                </item>
                </widget>
               </item>
               <item row="3" column="0" colspan="3">
@@ -721,6 +970,21 @@ QFrame#gridCards &gt;*{
                 <property name="placeholderText">
                  <string>Schwierigkeitsgrad</string>
                 </property>
+                <item>
+                 <property name="text">
+                  <string>Entspannt</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Unter Zeit (Leicht)</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Unter Zeit (Schwer)</string>
+                 </property>
+                </item>
                </widget>
               </item>
               <item row="5" column="0" colspan="3">
@@ -914,8 +1178,8 @@ QFrame#gridCards &gt;*{
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>612</width>
-                     <height>227</height>
+                     <width>606</width>
+                     <height>236</height>
                     </rect>
                    </property>
                    <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -1337,7 +1601,17 @@ QFrame#gridCards &gt;*{
             </item>
             <item row="0" column="1" colspan="2">
              <layout class="QGridLayout" name="gridGame">
-              <item row="0" column="0">
+              <item row="1" column="0">
+               <widget class="QLineEdit" name="lineEdit_2"/>
+              </item>
+              <item row="1" column="1">
+               <widget class="QPushButton" name="gameBtnEnter">
+                <property name="text">
+                 <string>Bestätigen</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0" colspan="2">
                <widget class="QFrame" name="gridPicture">
                 <property name="minimumSize">
                  <size>
@@ -1573,9 +1847,6 @@ QFrame#gridCards &gt;*{
                  </layout>
                 </widget>
                </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QLineEdit" name="lineEdit_2"/>
               </item>
              </layout>
             </item>

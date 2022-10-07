@@ -7,7 +7,9 @@
 #include "frmaccount.h"
 #include "fileexplorer.h"
 #include "logiccontroller.h"
+#include "frmhelp.h"
 #include "QFileDialog"
+#include <QMessageBox>
 
 namespace Ui {
 class FrmMain;
@@ -28,21 +30,10 @@ private slots:
     void openWindow(int window);
 
     //Login
-    void on_loginClbShowPw_stateChanged(int page);
-
     void on_loginBtnLogin_clicked();
 
 
     //Main
-    void on_btnLogout_clicked();
-
-    void on_btnStart_clicked();
-
-    void on_btnScoreboard_clicked();
-
-    void on_btnControl_clicked();
-
-    void on_btnHelp_clicked();
 
     void changeMainPage(int page);
 
@@ -52,11 +43,26 @@ private slots:
 
     void on_loginBtnOptions_clicked();
 
-    void on_btnOptions_clicked();
-
     void on_loginClbSignUp_clicked();
 
     void on_btnUploadPictures_clicked();
+
+
+    void on_loginCbShowPw_stateChanged(int state);
+
+    void on_sidebarBtnOptions_clicked();
+
+    void on_sidebarBtnLogout_clicked();
+
+    void on_sidebarBtnScoreboard_clicked();
+
+    void on_sidebarBtnStart_clicked();
+
+    void on_sidebarBtnHelp_clicked();
+
+    void on_sidebarBtnInfo_clicked();
+
+    void on_sidebarBtnControl_clicked();
 
 private:
     Ui::FrmMain *ui;
@@ -64,16 +70,24 @@ private:
     FrmOptions frmOptions;
     FrmAccount frmAccount;
     FileExplorer fileExplorer;
-    LogicController* client;
+    FrmHelp frmHelp;
 
     int windowWidth = 900;
     int windowHeight = 500;
-};
-enum window{
-    OPTIONSWINDOW,
-    ACCOUNTWINDOW,
-    FILEEXPLORER
-};
 
+    enum mainPage{
+        START = 0,
+        SCOREBOARD = 1,
+        CONTROL = 2,
+        GAME = 3
+    };
+    enum window{
+        OPTIONSWINDOW,
+        ACCOUNTWINDOW,
+        FILEEXPLORER,
+        HELPWINDOW
+    };
+
+};
 
 #endif // FRMMAIN_H

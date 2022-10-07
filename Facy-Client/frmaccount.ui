@@ -16,9 +16,69 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#FrmAccount *{
+	font-size: 16px;
+}
+QWidget#register1, #reset{
+	background-color: rgb(210, 210, 220);
+	border: 3px ridge rgb(150, 150, 150);
+}
+
+QLineEdit{
+	min-height: 30px;
+}
+
+QLineEdit#registerLeEmail, #registerLePassword1, #registerLePassword2, #resetLeEmail, #resetLePasswordOld, #resetLePasswordNew{
+	min-width: 200px;
+}
+
+QPushButton{
+	min-height: 30px;
+	border: 2px outset rgb(130, 130, 130);
+	border-radius: 1px;
+	background-color: 
+		qlineargradient(
+			spread:pad, x1:1, y1:0, x2:1, y2:1,
+			stop:0.5 rgba(240, 240, 240, 255),
+			stop:1 rgba(190, 190, 190, 255)
+		);
+}
+
+QPushButton::Hover{
+	border: 2px outset rgba(50, 50, 150, 200);
+	background-color: 
+		qlineargradient(
+			spread:pad, x1:1, y1:0, x2:1, y2:1,
+			stop:0.5 rgba(190, 190, 250, 255),
+			stop:1 rgba(140, 140, 200, 255)
+		);
+}
+
+QPushButton::Pressed{
+	border: 2px inset rgb(130, 130, 130);
+	border-radius: 1px;
+	background-color: 
+		qlineargradient(
+			spread:pad, x1:1, y1:0, x2:1, y2:1,
+			stop:0.5 rgba(240, 240, 240, 255),
+			stop:1 rgba(190, 190, 190, 255)
+		);
+}
+
+QCheckBox#registerCbShowPw::indicator:checked, #resetCbShowPw::indicator:checked{
+	image: url(:/Facy-Client/images/hide32x.png);
+}
+QCheckBox#registerCbShowPw::indicator:unchecked, #resetCbShowPw::indicator:unchecked{
+	image: url(:/Facy-Client/images/show32x.png);
+}</string>
+  </property>
   <layout class="QGridLayout" name="gridLayout_2">
    <item row="1" column="0">
     <widget class="QStackedWidget" name="accountWindow">
+     <property name="currentIndex">
+      <number>1</number>
+     </property>
      <widget class="QWidget" name="register1">
       <layout class="QGridLayout" name="gridLayout">
        <item row="2" column="1">
@@ -36,13 +96,6 @@
        </item>
        <item row="1" column="1">
         <layout class="QGridLayout" name="gridLayout_13">
-         <item row="3" column="0">
-          <widget class="QLabel" name="label_14">
-           <property name="text">
-            <string>Email-Adresse:</string>
-           </property>
-          </widget>
-         </item>
          <item row="2" column="0" colspan="3">
           <widget class="Line" name="line_9">
            <property name="orientation">
@@ -57,20 +110,20 @@
            </property>
           </widget>
          </item>
-         <item row="4" column="0">
-          <widget class="QLabel" name="label_15">
-           <property name="text">
-            <string>Passwort:</string>
+         <item row="3" column="1">
+          <widget class="QLineEdit" name="registerLeEmail">
+           <property name="placeholderText">
+            <string>Email-Adresse</string>
            </property>
           </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="QLineEdit" name="registerLeEmail"/>
          </item>
          <item row="4" column="1">
           <widget class="QLineEdit" name="registerLePassword1">
            <property name="echoMode">
             <enum>QLineEdit::Password</enum>
+           </property>
+           <property name="placeholderText">
+            <string>Passwort</string>
            </property>
           </widget>
          </item>
@@ -88,24 +141,20 @@
            </property>
           </widget>
          </item>
-         <item row="5" column="0">
-          <widget class="QLabel" name="label">
-           <property name="text">
-            <string>Passwort bestätigen:</string>
-           </property>
-          </widget>
-         </item>
          <item row="5" column="1">
           <widget class="QLineEdit" name="registerLePassword2">
            <property name="echoMode">
             <enum>QLineEdit::Password</enum>
            </property>
+           <property name="placeholderText">
+            <string>Passwort bestätigen</string>
+           </property>
           </widget>
          </item>
          <item row="4" column="2">
-          <widget class="QCheckBox" name="registerClbShowPw">
+          <widget class="QCheckBox" name="registerCbShowPw">
            <property name="text">
-            <string>zeige pw</string>
+            <string/>
            </property>
           </widget>
          </item>
@@ -152,7 +201,128 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="page2"/>
+     <widget class="QWidget" name="reset">
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="1" column="0">
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>166</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="1" column="1" colspan="2">
+        <layout class="QGridLayout" name="gridLayout_14">
+         <item row="2" column="0" colspan="3">
+          <widget class="Line" name="line_10">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0" colspan="3" alignment="Qt::AlignHCenter">
+          <widget class="QLabel" name="label_17">
+           <property name="text">
+            <string>Passwort zurücksetzen</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QLineEdit" name="resetLeEmail">
+           <property name="placeholderText">
+            <string>Email-Adresse</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QLineEdit" name="resetLePasswordOld">
+           <property name="echoMode">
+            <enum>QLineEdit::Password</enum>
+           </property>
+           <property name="placeholderText">
+            <string>Altes Passwort</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="0" colspan="3">
+          <widget class="Line" name="line_11">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0" colspan="3">
+          <widget class="QPushButton" name="resetBtnPassword">
+           <property name="text">
+            <string>Bestätigen</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1">
+          <widget class="QLineEdit" name="resetLePasswordNew">
+           <property name="echoMode">
+            <enum>QLineEdit::Password</enum>
+           </property>
+           <property name="placeholderText">
+            <string>Neues Passwort</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="2">
+          <widget class="QCheckBox" name="resetCbShowPw">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="3">
+        <spacer name="horizontalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>166</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="2" column="1" colspan="2">
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>73</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="1" colspan="2">
+        <spacer name="verticalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>79</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </item>
   </layout>

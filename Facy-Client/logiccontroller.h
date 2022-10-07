@@ -12,25 +12,27 @@
 #include <QFile>
 #include <QIODevice>
 #include <QByteArray>
+#include <QMetaEnum>
 
 class LogicController : public QObject
 {
         Q_OBJECT
 public:
-    LogicController();
+    static LogicController& getInstance()
+    {
+        static LogicController* instance = new LogicController();
+        return *instance;
+    }
 
-
-    void send(QString message);
+    QMap<int, QString> send(QString message);
     void connectTo(QString serverIP, int port);
 
-    QString checkEmail(QString email);
-    QList<QString> checkPassword(QString password);
+    QMap<int, QString> checkEmail(QString email);
+    QMap<int, QString> checkPassword(QString password);
     QByteArray convertImageToByte(QImage* img);
     QImage* convertByteToImage(QByteArray byteArray);
-
-private:
-    QSslSocket* client;
-    QString id = "1";
+    QMap<int, QString> accLogin(QString email, QString password);
+    QMap<int, QString> accRegister(QString email, QString password);
 
     QList<QString> error =
     {
@@ -42,8 +44,45 @@ private:
         "Kleinbuchstabe fehlt",
         "Zahl fehlt",
         "Zeichen fehlt",
-        "Passwort zu kurz"
+        "Passwort zu kurz",
+        "Passwörter stimmen nicht überein",
+
+        //Connection
+        "Verbindung fehlgeschlagen",
     };
+
+    enum errorE
+    {
+        //Email
+        EMAIL,
+
+        //Password
+        PW_UPPERCASE,
+        PW_LOWERCASE,
+        PW_NUMBER,
+        PW_SYMBOL,
+        PW_LENGTH,
+        PW_DIFFERENT,
+
+        //Connection
+        CN_FAILED
+    };
+
+private:
+    LogicController();
+
+    LogicController(const LogicController&) = delete;
+    LogicController& operator=(const LogicController&) = delete;
+    LogicController(LogicController&&) = delete;
+    LogicController& operator=(LogicController&&) = delete;
+
+    QMap<int, QString> startGame();
+    QMap<int, QString> joinExistingGame();
+    QList<bool> checkActiveGames();
+
+    QSslSocket* client;
+    //QTcpSocket* client;
+    QString id = "1";
 
 private slots:
     void recieve();
@@ -51,18 +90,4 @@ private slots:
     void sslErrors(QList<QSslError> sslErrors);
 
 };
-
-enum errorE
-{
-    //Email
-    EMAIL,
-
-    //Password
-    PW_UPPERCASE,
-    PW_LOWERCASE,
-    PW_NUMBER,
-    PW_SYMBOL,
-    PW_LENGTH
-};
-
 #endif // LOGICCONTROLLER_H

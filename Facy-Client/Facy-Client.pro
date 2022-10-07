@@ -12,6 +12,7 @@ CONFIG += c++17
 SOURCES += \
     fileexplorer.cpp \
     frmaccount.cpp \
+    frmhelp.cpp \
     frmmain.cpp \
     frmoptions.cpp \
     logiccontroller.cpp \
@@ -20,6 +21,7 @@ SOURCES += \
 HEADERS += \
     fileexplorer.h \
     frmaccount.h \
+    frmhelp.h \
     frmmain.h \
     frmoptions.h \
     logiccontroller.h
@@ -27,6 +29,7 @@ HEADERS += \
 FORMS += \
     fileexplorer.ui \
     frmaccount.ui \
+    frmhelp.ui \
     frmmain.ui \
     frmoptions.ui
 

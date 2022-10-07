@@ -1,32 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>FrmOptions</class>
- <widget class="QWidget" name="FrmOptions">
-  <property name="windowModality">
-   <enum>Qt::ApplicationModal</enum>
-  </property>
+ <class>FrmHelp</class>
+ <widget class="QWidget" name="FrmHelp">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>687</width>
-    <height>423</height>
+    <width>632</width>
+    <height>435</height>
    </rect>
   </property>
-  <property name="minimumSize">
-   <size>
-    <width>0</width>
-    <height>0</height>
-   </size>
-  </property>
   <property name="windowTitle">
-   <string>Einstellungen</string>
+   <string>Hilfe</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget#FrmOptions *{
+   <string notr="true">QWidget#FrmHelp *{
 	font-size: 16px;
 }
-QFrame#sidebar, QWidget#general, #network{
+QFrame#sidebar, QWidget#general, #game, #groups, #pictures, #accounts{
 	background-color: rgb(210, 210, 220);
 	border: 3px ridge rgb(150, 150, 150);
 }
@@ -107,9 +98,30 @@ QFrame#mainWindow .Spacer{
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="btnNetwork">
+       <widget class="QPushButton" name="btnGame">
         <property name="text">
-         <string>Netzwerk</string>
+         <string>Spielablauf</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnGroups">
+        <property name="text">
+         <string>Gruppen verwalten</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnPictures">
+        <property name="text">
+         <string>Bilder verwalten</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnAccounts">
+        <property name="text">
+         <string>Accounts</string>
         </property>
        </widget>
       </item>
@@ -119,7 +131,7 @@ QFrame#mainWindow .Spacer{
    <item row="0" column="1">
     <widget class="QStackedWidget" name="mainWindow">
      <property name="currentIndex">
-      <number>1</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="general">
       <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -142,17 +154,80 @@ QFrame#mainWindow .Spacer{
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="network">
+     <widget class="QWidget" name="game">
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
         <widget class="QLabel" name="label_2">
          <property name="text">
-          <string>Netzwerkeinstellungen</string>
+          <string>Spielablauf</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QFrame" name="frame_2">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="groups">
+      <layout class="QVBoxLayout" name="verticalLayout_5">
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>Gruppen verwalten</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="frame_3">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="pictures">
+      <layout class="QVBoxLayout" name="verticalLayout_6">
+       <item>
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>Bilder verwalten</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="frame_4">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="accounts">
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>Accounts</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="frame_5">
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
          </property>

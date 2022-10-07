@@ -6,16 +6,16 @@ FrmMain::FrmMain(QWidget *parent) :
     ui(new Ui::FrmMain)
 {
     ui->setupUi(this);
-    changeFacyPage(1);
-    changeMainPage(2);
+    changeFacyPage(0);
+    changeMainPage(0);
 
     //================================Eingefuegt von Roman=========
     qDebug() << "Info: Server muss vor dem Client gestartet werden.\n"
                 "ansonsten keine Verbingung möglich.";
     //starts with a connect to the Server
-    client = new LogicController();
-    //client->connectTo("127.0.0.1", 8080);
-    //client->send("Test Nachricht.");
+
+    LogicController::getInstance().connectTo("127.0.0.1", 8080);
+    LogicController::getInstance().send("Test Nachricht.");
     /*TODO implement all actions in this application when recieving
     codes and Data from the Server*/
     //================================Eingefuegt von Roman=========
@@ -26,11 +26,20 @@ FrmMain::~FrmMain()
     delete ui;
 }
 
+/**
+ * @brief FrmMain::changeFacyPage
+ * @param page
+ */
 void FrmMain::changeFacyPage(int page)
 {
     ui->facyWindow->setCurrentIndex(page);
 }
 
+/**
+ * Opens the selected Window in front
+ * @brief FrmMain::openWindow
+ * @param window
+ */
 void FrmMain::openWindow(int window)
 {
     switch (window) {
@@ -49,11 +58,15 @@ void FrmMain::openWindow(int window)
         fileExplorer.show();
         break;
 
+    case HELPWINDOW:
+        frmHelp.setWindowFlags(Qt::WindowCloseButtonHint);
+        frmHelp.show();
+        break;
+
     default:
         break;
     }
 }
-
 
 /*==================================================
  *
@@ -62,24 +75,17 @@ void FrmMain::openWindow(int window)
  ==================================================*/
 
 
-
-void FrmMain::on_loginClbShowPw_stateChanged(int state)
-{
-    if(state == 0) {
-        ui->loginLePassword->setEchoMode(QLineEdit::Password);
-    }else {
-        ui->loginLePassword->setEchoMode(QLineEdit::Normal);
-    }
-}
-
-
 void FrmMain::on_loginBtnLogin_clicked()
 {
-    changeFacyPage(1);
     QString email = ui->loginLeEmail->text();
     QString password = ui->loginLePassword->text();
-    qDebug() << client->checkEmail(email);
-    qDebug() << client->checkPassword(password);
+
+
+    QMap<int, QString> outError = LogicController::getInstance().accLogin(email, password);
+
+    qDebug() << outError;
+
+    changeFacyPage(1);
 }
 
 void FrmMain::on_loginBtnOptions_clicked()
@@ -92,53 +98,64 @@ void FrmMain::on_loginClbSignUp_clicked()
     openWindow(ACCOUNTWINDOW);
 }
 
-
 /*==================================================
  *
  *      Main    -   Sidebar
  *
  ==================================================*/
-void FrmMain::on_btnLogout_clicked()
+
+/**
+ * @brief FrmMain::changeMainPage
+ * @param page
+ */
+void FrmMain::changeMainPage(int page)
+{
+    ui->mainWindow->setCurrentIndex(page);
+}
+
+void FrmMain::on_sidebarBtnLogout_clicked()
 {
     changeFacyPage(0);
 }
 
-void FrmMain::on_btnStart_clicked()
+void FrmMain::on_sidebarBtnStart_clicked()
 {
-    changeMainPage(0);
+    changeMainPage(START);
 }
 
-
-void FrmMain::on_btnScoreboard_clicked()
+void FrmMain::on_sidebarBtnScoreboard_clicked()
 {
-    changeMainPage(1);
+    changeMainPage(SCOREBOARD);
 }
 
-
-void FrmMain::on_btnControl_clicked()
+void FrmMain::on_sidebarBtnControl_clicked()
 {
-    changeMainPage(2);
+    changeMainPage(CONTROL);
 }
 
-
-void FrmMain::on_btnHelp_clicked()
-{
-
-}
-
-void FrmMain::on_btnOptions_clicked()
+void FrmMain::on_sidebarBtnOptions_clicked()
 {
     openWindow(OPTIONSWINDOW);
 }
 
-void FrmMain::on_btnGame_clicked()
+void FrmMain::on_sidebarBtnHelp_clicked()
 {
-    changeMainPage(3);
+    openWindow(HELPWINDOW);
 }
 
-void FrmMain::changeMainPage(int page)
+void FrmMain::on_sidebarBtnInfo_clicked()
 {
-    ui->mainWindow->setCurrentIndex(page);
+    QMessageBox helpBox;
+    helpBox.setWindowTitle("Info");
+    helpBox.setText("Schulprojekt Facefinder aka. \"Facy\"");
+    QString text =
+            "Gruppenmitglieder:\n Roman Kretzschmar & Marius Hannappel \n\n"
+            "Arbeitszeitraum:\n 1. Schulblock im 3. Ausbildungsjahr + 1 Woche Verlängerung (07.09.22 - 07.10.22)\n\n"
+            "Das Projekt konnte aufgrund einem Wechsel der Technologien 2 Wochen nach Beginn, sowie Problemen bei der Implementierung verschiedener Funktionalitäten nicht im ursprünglichen Zeitraum fertiggestellt werden.\n\n";
+
+    helpBox.setInformativeText(text);
+    helpBox.setStandardButtons(QMessageBox::Ok);
+    helpBox.exec();
 }
 
 void FrmMain::resizeEvent(QResizeEvent *event)
@@ -170,17 +187,6 @@ void FrmMain::resizeEvent(QResizeEvent *event)
  *
  ==================================================*/
 
-
-
-
-
-
-
-
-
-
-
-
 /**
  * @brief FrmMain::on_btnUploadPictures_clicked
  */
@@ -202,15 +208,30 @@ void FrmMain::on_btnUploadPictures_clicked()
         //Consoleoutput for properties of the selected image
         qDebug() << "SelectedImage:" << *tempImg;
 
-        QByteArray tempBa = client->convertImageToByte(tempImg);
+        QByteArray tempBa = LogicController::getInstance().convertImageToByte(tempImg);
 
         //currently not working: returns QImage(null)
-        QImage* tempImg = client->convertByteToImage(tempBa);
+        QImage* tempImg = LogicController::getInstance().convertByteToImage(tempBa);
 
         //Consoleoutput for properties of the converted image (to bytes and back to image)
         qDebug() << "\nConvertedImgList:" << *tempImg;
     }
-
-
 }
 
+/**
+ * @brief FrmMain::on_loginCbShowPw_stateChanged
+ * @param state
+ */
+void FrmMain::on_loginCbShowPw_stateChanged(int state)
+{
+    if(state == 0) {
+        ui->loginLePassword->setEchoMode(QLineEdit::Password);
+    }else {
+        ui->loginLePassword->setEchoMode(QLineEdit::Normal);
+    }
+}
+
+void FrmMain::on_btnGame_clicked()
+{
+    changeMainPage(GAME);
+}

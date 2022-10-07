@@ -13,6 +13,7 @@
 LogicController::LogicController() : QObject()
 {
     client = new QSslSocket();
+    //client = new QTcpSocket();
     connect(client, SIGNAL(readyRead()), this, SLOT(recieve()));
     connect(client, SIGNAL(disconnected()), this, SLOT(disconnect()));
     connect(client, SIGNAL(sslErrors(QList<QSslError>)), this, SLOT(sslErrors(QList<QSslError>)));
@@ -21,7 +22,7 @@ LogicController::LogicController() : QObject()
     client->setLocalCertificate("../Encryption/blue_local.pem");
     client->setPeerVerifyMode(QSslSocket::VerifyNone);
 
-    //connect(client, SIGNAL(readyRead()), this ,SLOT(recieve()));
+    connect(client, SIGNAL(readyRead()), this ,SLOT(recieve()));
 }//Constuctor()
 
 /**
@@ -29,16 +30,20 @@ LogicController::LogicController() : QObject()
  * @brief LogicController::send
  * @param message
  */
-void LogicController::send(QString message){
+QMap<int, QString> LogicController::send(QString message)
+{
+    QMap<int, QString> outErrors;
+
     if(client->waitForEncrypted(5000)){
         qDebug() << "[" + id + "] sending: " + message;
         client->write(message.toLatin1());
     } else {
         //verbindung fehlgeschlagen
-        qDebug() << "unable to connect to server.";
-        exit(0);
+        outErrors.insert(CN_FAILED, error[CN_FAILED]);
+        //exit(0);
     }
 
+    return outErrors;
 }//send()
 
 /**
@@ -71,7 +76,7 @@ void LogicController::recieve(){
  */
 void LogicController::connectTo(QString serverIP, int port){
     qDebug() << "connecting...";
-    //client->connectToHost(serverIP, port);
+    client->connectToHost(serverIP, port);
     client->connectToHostEncrypted(serverIP, port);
 }//connect()
 
@@ -90,28 +95,19 @@ void LogicController::disconnect(){
  * @param QString email
  * @return QString out
  */
-QString LogicController::checkEmail(QString email)
+QMap<int, QString> LogicController::checkEmail(QString email)
 {
-    QString out = error[EMAIL];
+    QMap<int, QString> outErrors;
 
-    //Check1: Email enthält ein(!) "@"
-    if(email.count("@") == 1)
+    QRegExp regExEmail("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$");
+
+    //Check if Email is valid
+    if(!regExEmail.exactMatch(email))
     {
-        QList temp =email.split("@");
-
-        //Check:2 Email enthält ein(!) "."
-        if(temp[1].count(".") == 1)
-        {
-            temp = temp[1].split(".");
-
-            //Check:3 Email enthält min. ein character vor und nach "."
-            if(temp[0] != "" && temp[1] != "")
-            {
-                out = "";
-            }
-        }
+        outErrors.insert(EMAIL, error[EMAIL]);
     }
-   return out;
+
+   return outErrors;
 }
 
 /**
@@ -119,57 +115,44 @@ QString LogicController::checkEmail(QString email)
  * @brief LogicController::checkPassword
  * @param QString password
  * @return QList<QString> out
- *
- *      index 0 = Error:UppercaseMissing,
- *      index 1 = Error:LowercaseMissing,
- *      index 2 = Error:NumberMissing,
- *      index 3 = Error:SymbolMissing,
- *      index 4 = Error:LengthUnder12,
  */
-QList<QString> LogicController::checkPassword(QString password)
+QMap<int, QString> LogicController::checkPassword(QString password)
 {
-    QList<QString> out =
-    {
-        error[PW_UPPERCASE],
-        error[PW_LOWERCASE],
-        error[PW_NUMBER],
-        error[PW_SYMBOL],
-        error[PW_LENGTH]
-    };
+    QMap<int, QString> outErrors;
 
-    QString specialCharacters = " !#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
-    specialCharacters += '"';
+    QRegExp regExLower("[a-z]");
+    QRegExp regExUpper("[A-Z]");
+    QRegExp regExNumber("[0-9]");
+    QRegExp regExSpecial("[ !#$%&'()*+,-./:;<=>?@[\\]^_`{|}~]");
 
-    for (QChar temp: password)
+    //Check1: if character is uppercase
+    if(!password.contains(regExUpper))
     {
-        //Check1: if character is uppercase
-        if(temp.isUpper())
-        {
-            out[0] = "";
-        }
-        //Check2: if character is lowercase
-        if(temp.isLower())
-        {
-            out[1] = "";
-        }
-        //Check3: if character is number
-        if(temp.isNumber())
-        {
-            out[2] = "";
-        }
-        //Check4: if character is symbol
-        if(specialCharacters.contains(temp))
-        {
-            out[3] = "";
-        }
+        outErrors.insert(PW_UPPERCASE, error[PW_UPPERCASE]);
+    }
+    //Check2: if character is lowercase
+    if(!password.contains(regExLower))
+    {
+        outErrors.insert(PW_LOWERCASE, error[PW_LOWERCASE]);
+    }
+    //Check3: if character is number
+    if(!password.contains(regExNumber))
+    {
+        outErrors.insert(PW_NUMBER, error[PW_NUMBER]);
+    }
+    //Check4: if character is symbol
+    if(!password.contains(regExSpecial))
+    {
+        outErrors.insert(PW_SYMBOL, error[PW_SYMBOL]);
     }
     //Check5: if passwort is at least 12 characters long
-    if(password.length() >= 12)
+    if(password.length() < 12)
     {
-        out[4] = "";
+        outErrors.insert(PW_LENGTH, error[PW_LENGTH]);
     }
-    return out;
-}//disconnect()
+
+    return outErrors;
+}
 
 /**
  * Prints SslErrors to the Console
@@ -218,4 +201,67 @@ QImage* LogicController::convertByteToImage(QByteArray byteArray)
     //out->loadFromData(reinterpret_cast<const uchar *>(byteArray.data()),byteArray.length());
     //qDebug() <<"FUCKING IMAGE " << ok;
     return out;
+}
+
+/**
+ * @brief LogicController::accLogin
+ * @param email
+ * @param password
+ * @return
+ */
+QMap<int, QString> LogicController::accLogin(QString email, QString password)
+{
+    QMap<int, QString> outErrors;
+
+    //Check if Email is valid
+    outErrors = checkEmail(email);
+
+    //Try to login
+    if(outErrors.empty()) {
+        outErrors = send("LOGIN~"+email+"~"+password);
+    }
+    return outErrors;
+}
+
+/**
+ * @brief LogicController::accRegister
+ * @param email
+ * @param password
+ * @return
+ */
+QMap<int, QString> LogicController::accRegister(QString email, QString password)
+{
+    QMap<int, QString> outErrors;
+
+    //outTemp = checkEmail(email);
+    outErrors.insert(checkEmail(email));
+
+    outErrors.insert(checkPassword(password));
+
+    if(outErrors.empty())
+    {
+        send("CREATE_USER~"+email+"~"+password);
+    }
+
+    return outErrors;
+}
+
+//TODO
+QMap<int, QString> LogicController::startGame()
+{
+
+}
+
+//TODO
+QMap<int, QString> LogicController::joinExistingGame()
+{
+
+}
+
+//TODO
+QList<bool> LogicController::checkActiveGames()
+{
+    QList<bool> gamesActive;
+
+    return gamesActive;
 }

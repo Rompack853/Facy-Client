@@ -2,6 +2,7 @@
 #define FRMACCOUNT_H
 
 #include <QWidget>
+#include "logiccontroller.h"
 
 namespace Ui {
 class FrmAccount;
@@ -16,7 +17,11 @@ public:
     ~FrmAccount();
 
 private slots:
-    void on_registerClbShowPw_stateChanged(int state);
+    void on_registerCbShowPw_stateChanged(int state);
+
+    void on_registerBtnLogin_clicked();
+
+    void on_resetCbShowPw_stateChanged(int state);
 
 private:
     Ui::FrmAccount *ui;
